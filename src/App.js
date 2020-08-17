@@ -6,7 +6,8 @@ import Profile from './components/Profile/Profile';
 import Nav from './components/Nav/Nav';
 import Messages from './components/Messages/Messages';
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router, 
+  Route
 } from 'react-router-dom'
 
 function App() {
@@ -17,8 +18,8 @@ function App() {
         <Header />
         <Nav />
           <div className='content'>
-            <Messages />
-            <Profile />
+            <Route path='/messages' component={Messages} />
+            <Route path='/profile' component={Profile} />
           </div>
         <Footer />
       </Router>
