@@ -3,3 +3,9 @@
     grid-area: nav;
     background-color: cadetblue;
 }
+.item a{
+    color: rgb(200, 235, 248);
+}
+.item a.activeName{
+    color: rgb(177, 58, 224);
+}
