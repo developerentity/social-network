@@ -25,31 +25,6 @@ const Profile = () => {
 
             Morbi eget mi sem. Mauris consequat ligula eu magna elementum ultrices. Mauris ultricies, augue sed blandit finibus, quam velit malesuada neque, id consectetur nulla massa nec diam. Nunc in quam et turpis ornare consectetur. Mauris aliquam, libero id dignissim dapibus, lorem dolor molestie enim, vel malesuada risus mi quis massa. Sed ut consequat felis. Nulla facilisis dapibus nulla ac dictum. Praesent in pellentesque sapien, vitae pellentesque nisl. */}
 
-            <div className={style.gridIn}>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                <div className={style.cWhite}>1</div>
-                <div className={`${style.cWhite} ${style.cGrey}`}>2</div>
-                
-            </div>
         </article>
     )
 }
