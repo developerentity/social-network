@@ -16,19 +16,19 @@ const Nav = () => {
                 </NavLink>
             </div>
             <div>
-                <a className={style.item}>
+                <NavLink to='/news' className={style.item}>
                     News
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a className={style.item}>
+                <NavLink to='/music' className={style.item}>
                     Music
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a className={style.item}>
+                <NavLink to='/settings' className={style.item}>
                     Settings
-                </a>
+                </NavLink>
             </div>
         </nav>
     )
