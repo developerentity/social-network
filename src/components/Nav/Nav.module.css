@@ -5,6 +5,8 @@
 }
 .item a{
     color: rgb(200, 235, 248);
+    text-decoration: none;
+    font-size: 1.5em; 
 }
 .item a.activeName{
     color: rgb(177, 58, 224);
