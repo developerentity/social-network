@@ -16,8 +16,10 @@ function App() {
       <Router>
         <Header />
         <Nav />
-          <Messages />
-          <Profile />
+          <div className='content'>
+            <Messages />
+            <Profile />
+          </div>
         <Footer />
       </Router>
       </div>

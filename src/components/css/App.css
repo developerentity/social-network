@@ -16,7 +16,14 @@
   margin: 0;
   background-color: rgb(158, 233, 252);
 }
+.content {
+  grid-area: article;
 
+  font-size: 1em;
+  padding: 1em 10em;
+  text-align: start;
+  background-color: royalblue;
+}
 /* header, nav, article, footer{
   text-align: center;
   background-color:white;

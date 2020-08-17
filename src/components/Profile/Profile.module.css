@@ -1,11 +1,4 @@
-.content {
-    grid-area: article;
-  
-    font-size: 1em;
-    padding: 1em 10em;
-    text-align: start;
-    background-color: royalblue;
-}
+
 
 .gridIn { 
     display: grid;

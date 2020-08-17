@@ -3,7 +3,7 @@ import style from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <article className={style.content}>
+        <article>
             {/* <h3>Article</h3>
             loremLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis felis consequat odio accumsan finibus in sed nibh. Nam iaculis lectus quis auctor euismod. Vestibulum finibus semper leo at porta. Sed purus nulla, efficitur quis nulla vel, auctor molestie odio. Donec et rhoncus eros. Nam luctus varius ex nec fermentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
