@@ -1,10 +1,14 @@
 import React from 'react';
 import style from './Profile.module.css';
+import avatar from './../img/images.png'
 
 const Profile = () => {
     return (
-        <article>
-            {/* <h3>Article</h3>
+        <article className={style.article}>
+        
+            <img src={avatar} alt='...' />
+
+            <h3>Article</h3>
             loremLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis felis consequat odio accumsan finibus in sed nibh. Nam iaculis lectus quis auctor euismod. Vestibulum finibus semper leo at porta. Sed purus nulla, efficitur quis nulla vel, auctor molestie odio. Donec et rhoncus eros. Nam luctus varius ex nec fermentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
             Fusce in imperdiet libero. Integer iaculis velit a dui hendrerit, at pellentesque ligula porta. Quisque a magna arcu. Aliquam porta dui et felis mattis lobortis. Vivamus tincidunt ante massa, et aliquet dui dapibus lobortis. Nulla et hendrerit magna, id rutrum purus. Duis porttitor luctus mauris, eget porta nisi accumsan vitae. Quisque bibendum tortor in turpis luctus, nec convallis nulla placerat. Phasellus eu hendrerit sapien. Phasellus eu augue enim. Sed sit amet elit in nisl faucibus placerat. Curabitur blandit gravida nibh, pharetra consectetur nibh scelerisque in. Nullam pretium, nulla eu facilisis rutrum, nisl justo bibendum orci, et posuere libero magna nec lectus.
@@ -23,7 +27,7 @@ const Profile = () => {
 
             Pellentesque non mauris eget odio faucibus dapibus. Maecenas at justo eu dui consectetur posuere ac ut libero. Nulla facilisi. Quisque eget justo ac velit dictum ultricies. Quisque nec ullamcorper tortor. Integer luctus, sem in finibus pharetra, ipsum felis mollis turpis, quis bibendum mauris ipsum quis lacus. Nulla sodales sit amet libero vel interdum. Mauris a sagittis ex, in efficitur neque. Curabitur id tincidunt quam. Duis finibus nec ligula et lacinia. Sed in lacinia velit. Vestibulum arcu libero, elementum quis risus nec, vehicula malesuada mauris. Maecenas convallis lorem a tempor semper. Vivamus ut nisi mi.
 
-            Morbi eget mi sem. Mauris consequat ligula eu magna elementum ultrices. Mauris ultricies, augue sed blandit finibus, quam velit malesuada neque, id consectetur nulla massa nec diam. Nunc in quam et turpis ornare consectetur. Mauris aliquam, libero id dignissim dapibus, lorem dolor molestie enim, vel malesuada risus mi quis massa. Sed ut consequat felis. Nulla facilisis dapibus nulla ac dictum. Praesent in pellentesque sapien, vitae pellentesque nisl. */}
+            Morbi eget mi sem. Mauris consequat ligula eu magna elementum ultrices. Mauris ultricies, augue sed blandit finibus, quam velit malesuada neque, id consectetur nulla massa nec diam. Nunc in quam et turpis ornare consectetur. Mauris aliquam, libero id dignissim dapibus, lorem dolor molestie enim, vel malesuada risus mi quis massa. Sed ut consequat felis. Nulla facilisis dapibus nulla ac dictum. Praesent in pellentesque sapien, vitae pellentesque nisl.
 
         </article>
     )

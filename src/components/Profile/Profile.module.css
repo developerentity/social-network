@@ -1,21 +1,5 @@
-
-
-.gridIn { 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-gap: 2vw;
-}
-  
-.gridIn > div {
-    font-size: 5vw;
-    padding: .1em;
-    
-    text-align: center;
-}
-
-.cWhite {
-    background-color: rgb(131, 53, 53);
-}
-.cWhite.cGrey {
-    background-color: whitesmoke;
+.article img {
+    margin: 0;
+    float: left;
+    width: 80px;
 }
