@@ -9,7 +9,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {
-  BrowserRouter as Router, 
+  BrowserRouter as Router,
   Route
 } from 'react-router-dom'
 
@@ -17,9 +17,9 @@ function App() {
   return (
     <div className="container">
       <div className="grid">
-      <Router>
-        <Header />
-        <Nav />
+        <Router>
+          <Header />
+          <Nav />
           <div className='content'>
             <Route path='/profile' component={Profile} />
             <Route path='/messages' component={Messages} />
@@ -27,8 +27,8 @@ function App() {
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
           </div>
-        <Footer />
-      </Router>
+          <Footer />
+        </Router>
       </div>
     </div>
   );
