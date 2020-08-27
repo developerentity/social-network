@@ -1,26 +1,20 @@
-.shuffle {
-    height: 700px;
-    width: 400px;
-    margin: auto;
-    background-color: white;
-}
 .block1{
     background-color: tomato;
-    height: 25%;
+    height: 150px;
     width: 100%;
 }
 .block2{
     background-color: teal;
-    height: 25%;
+    height: 150px;
     width: 100%;
 }
 .block3{
     background-color: turquoise;
-    height: 25%;
+    height: 150px;
     width: 100%;
 }
 .block4{
     background-color: yellowgreen;
-    height: 25%;
+    height: 150px;
     width: 100%;
 }
