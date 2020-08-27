@@ -30,6 +30,11 @@ const Nav = () => {
                     Settings
                 </NavLink>
             </div>
+            <div  className={style.item}>
+                <NavLink to='/shuffle' activeClassName={style.activeName}>
+                    Shuffle
+                </NavLink>
+            </div>
         </nav>
     )
 }

@@ -8,6 +8,7 @@ import Messages from './components/Messages/Messages';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import Shuffle from './components/Shuffle/Shuffle';
 import {
   BrowserRouter as Router,
   Route
@@ -26,6 +27,7 @@ function App() {
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
+            <Route path='/shuffle' component={Shuffle} />
           </div>
           <Footer />
         </Router>
