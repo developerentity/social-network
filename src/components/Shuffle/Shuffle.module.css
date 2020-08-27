@@ -1,20 +1,43 @@
+/* .block1.block2{
+    height: 150px;
+    width: 100%;
+    text-align: center;
+} */                     
+/*             почему это не работает ? */
+
 .block1{
     background-color: tomato;
     height: 150px;
     width: 100%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .block2{
     background-color: teal;
     height: 150px;
     width: 100%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .block3{
     background-color: turquoise;
     height: 150px;
     width: 100%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .block4{
     background-color: yellowgreen;
     height: 150px;
     width: 100%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

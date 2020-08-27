@@ -3,7 +3,7 @@ import style from './Shuffle.module.css';
 
 const Block4 = () => {
     return (
-        <div className={style.block4} />
+        <div className={style.block4}> Fourth </div>
     )
 }
 
