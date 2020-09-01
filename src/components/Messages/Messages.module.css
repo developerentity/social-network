@@ -1,6 +1,23 @@
-.left {
-    float: left;
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
-.right {
-    float: right;
+.dialogsItems {
+    padding: 10px;
+}
+.dialog {
+
+}
+.dialog a {
+    text-decoration: none;
+    color: white;
+}
+.dialog a.act {
+    color: coral; 
+}
+.messages {
+    padding: 10px;
+}
+.message {
+
 }
