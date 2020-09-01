@@ -1,6 +1,9 @@
 .wallpaper {
     margin-bottom: 15px;
 }
+.wrap {
+    padding: 20px;
+}
 .avatar { 
     margin-right: 20px;
     float: left;
