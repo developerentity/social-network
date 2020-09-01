@@ -21,6 +21,18 @@ const Message = (props) => {
     )
 }
 
+let dialogsData = [
+    {id: 1, name: "Bogdan"},
+    {id: 2, name: "Vera"},
+    {id: 3, name: "Nadezhda"},
+    {id: 4, name: "Lyubov"}
+]
+
+let messagesData = [
+    {id: 1, m: "First message to Dev"},
+    {id: 2, m: "Second random message"},
+    {id: 3, m: "Third crazy message"},
+]
 
 const Messages = () => {
     return (
@@ -28,36 +40,35 @@ const Messages = () => {
             <div className={style.dialogsItems}>
 
                 <DialogItem
-                    name="Bohdan"
-                    id="1"
+                    name={dialogsData[0].name}
+                    id={dialogsData[0].id}
                 />
                 <DialogItem
-                    name="Vera"
-                    id="2"
+                    name={dialogsData[1].name}
+                    id={dialogsData[1].id}
                 />
                 <DialogItem
-                    name="Nadezhda"
-                    id="3"
+                    name={dialogsData[2].name}
+                    id={dialogsData[2].id}
                 />
                 <DialogItem
-                    name="Lyubov"
-                    id="4"
-                />
-
+                    name={dialogsData[3].name}
+                    id={dialogsData[3].id}
+                />               
             </div>
 
 
             <div className={style.messages}>
 
                 <Message
-                    message="First message to Dev"
-                />
+                    message={messagesData[0].m}
+                />              
                 <Message
-                    message="Second random message"
-                />
+                    message={messagesData[1].m}
+                />              
                 <Message
-                    message="Third crazy message"
-                />
+                    message={messagesData[2].m}
+                />              
             </div>
 
         </div>
