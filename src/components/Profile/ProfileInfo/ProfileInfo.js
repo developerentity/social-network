@@ -6,7 +6,7 @@ import avatar from './../../img/images.png';
 const ProfileInfo = () => {
     return (
         <>
-            <div>
+            <div className={style.wallpaper}>
                 <img src={wallpaper} alt="..." />
             </div>
 

@@ -1,0 +1,11 @@
+.wallpaper {
+    margin-bottom: 15px;
+}
+.avatar { 
+    margin-right: 20px;
+    float: left;
+    width: 80px;
+}
+img {
+    max-width: 100%;
+}
