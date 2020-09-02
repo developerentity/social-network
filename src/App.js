@@ -15,6 +15,7 @@ import {
 } from 'react-router-dom'
 
 function App(props) {
+
   return (
     <div className="container">
       <div className="grid">
@@ -25,8 +26,8 @@ function App(props) {
             <Route path='/profile' component={Profile} />
             <Route path='/messages'>
               <Messages
-                dialogsData={props.dialogsData}
-                messagesData={props.messagesData}
+                dialogsData={props.state.messagePage.dialogsData}
+                messagesData={props.state.messagePage.messagesData}
               />
             </Route>
             <Route path='/news' component={News} />

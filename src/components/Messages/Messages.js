@@ -23,7 +23,6 @@ const Messages = (props) => {
                 {messagesElements}
 
             </div>
-
         </div>
     )
 }
