@@ -14,7 +14,7 @@ import {
   Route
 } from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
     <div className="container">
       <div className="grid">
@@ -23,7 +23,12 @@ function App() {
           <Nav />
           <div className='content'>
             <Route path='/profile' component={Profile} />
-            <Route path='/messages' component={Messages} />
+            <Route path='/messages'>
+              <Messages
+                dialogsData={props.dialogsData}
+                messagesData={props.messagesData}
+              />
+            </Route>
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
