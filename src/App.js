@@ -23,7 +23,11 @@ function App(props) {
           <Header />
           <Nav />
           <div className='content'>
-            <Route path='/profile' component={Profile} />
+            <Route path='/profile'>
+              <Profile 
+                postsData={props.state.profilePage.postsData}
+              />
+            </Route>
             <Route path='/messages'>
               <Messages
                 dialogsData={props.state.messagePage.dialogsData}

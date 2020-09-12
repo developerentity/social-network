@@ -2,7 +2,7 @@ import React from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
     return (
         <div className={style.wrap}>
             <h4> Feed </h4>
@@ -13,13 +13,12 @@ const MyPosts = () => {
                 <button>Add news</button>
             </div>
             <div className={style.posts}>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+                <Post 
+                    postsData={props.postsData[2]}
+                />
+                <Post 
+                    postsData={props.postsData[1]}
+                />
             </div>
         </div>
     )
