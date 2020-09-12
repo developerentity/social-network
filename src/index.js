@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './components/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state from './data/state'
+import state from './data/state';
+import { addPost } from './data/state';
 
 ReactDOM.render(
   <React.StrictMode>
     <App
       state={state}
+      addPost={addPost}
     />
   </React.StrictMode>,
   document.getElementById('root')

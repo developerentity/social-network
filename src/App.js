@@ -26,6 +26,7 @@ function App(props) {
             <Route path='/profile'>
               <Profile 
                 postsData={props.state.profilePage.postsData}
+                addPost={props.addPost}
               />
             </Route>
             <Route path='/messages'>

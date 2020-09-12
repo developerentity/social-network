@@ -10,6 +10,7 @@ const Profile = (props) => {
             <ProfileInfo />
             <MyPosts 
                 postsData={props.postsData}
+                addPost={props.addPost}
             />
         </article>
     )

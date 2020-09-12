@@ -43,4 +43,13 @@ let state = {
     }
 }
 
+export let addPost = (postMessage) => {
+    let newPost = {
+        avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
+        text: postMessage,
+        like: 33
+    }
+    state.profilePage.postsData.push(newPost)
+}
+
 export default state;
