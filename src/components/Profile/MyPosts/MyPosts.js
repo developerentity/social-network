@@ -12,14 +12,21 @@ const MyPosts = (props) => {
             like={post.like}
         />)
 
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        alert(text)
+    }
+
     return (
         <div className={style.wrap}>
             <h4> Feed </h4>
             <div>
                 <div className="containerTextarea">
-                    <textarea />
+                    <textarea ref={newPostElement} />
                 </div>
-                <button>Add news</button>
+                <button onClick={ addPost }>Add news</button>
             </div>
             <div className={style.posts}>
                 {postsElements}
