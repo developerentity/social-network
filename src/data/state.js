@@ -21,22 +21,22 @@ let state = {
             },
             {
                 avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-                text: `First post text`,
+                text: `Second post text`,
                 like: 21
             },
             {
                 avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-                text: `First post text`,
+                text: `Third post text`,
                 like: 8
             },
             {
                 avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-                text: `First post text`,
+                text: `Fourth post text`,
                 like: 5
             },
             {
                 avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-                text: `First post text`,
+                text: `Fifth post text`,
                 like: 21
             }
         ]

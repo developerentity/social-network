@@ -3,6 +3,15 @@ import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
+
+    let postsElements = props.postsData
+        .map(post => <Post
+            key={post.text}
+            avatar={post.avatar}
+            text={post.text}
+            like={post.like}
+        />)
+
     return (
         <div className={style.wrap}>
             <h4> Feed </h4>
@@ -13,12 +22,7 @@ const MyPosts = (props) => {
                 <button>Add news</button>
             </div>
             <div className={style.posts}>
-                <Post 
-                    postsData={props.postsData[2]}
-                />
-                <Post 
-                    postsData={props.postsData[1]}
-                />
+                {postsElements}
             </div>
         </div>
     )

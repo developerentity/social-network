@@ -5,11 +5,11 @@ const Post = (props) => {
     
     return (
         <div className={style.item}>
-            <img src={props.postsData.avatar} alt="Img" />
-            {props.postsData.text}
+            <img src={props.avatar} alt="..." />
+            {props.text}
             <div>
                 <span>
-                    {`Like ${props.postsData.like}`}
+                    {`Like ${props.like}`} 
                 </span> 
             </div>
         </div>
