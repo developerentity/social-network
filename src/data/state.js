@@ -1,3 +1,6 @@
+let rerenderEntireTree = () => {
+    console.log("Changed")
+} 
 let state = {
     messagePage: {
         dialogsData: [
@@ -50,6 +53,11 @@ export let addPost = (postMessage) => {
         like: 33
     }
     state.profilePage.postsData.push(newPost)
+    rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
 }
 
 export default state;
