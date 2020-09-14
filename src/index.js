@@ -4,7 +4,7 @@ import './components/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import state, { subscribe } from './data/state';
-import { addPost } from './data/state';
+import { addPost, changePost } from './data/state';
 
 let rerenderEntireTree = (state) => {
   ReactDOM.render(
@@ -12,6 +12,7 @@ let rerenderEntireTree = (state) => {
       <App
         state={state}
         addPost={addPost}
+        changePost={changePost}
       />
     </React.StrictMode>,
     document.getElementById('root')

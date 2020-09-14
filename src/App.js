@@ -25,8 +25,9 @@ function App(props) {
           <div className='content'>
             <Route path='/profile'>
               <Profile 
-                postsData={props.state.profilePage.postsData}
+                profilePage={props.state.profilePage}
                 addPost={props.addPost}
+                changePost={props.changePost}
               />
             </Route>
             <Route path='/messages'>

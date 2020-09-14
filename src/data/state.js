@@ -42,17 +42,24 @@ let state = {
                 text: `Fifth post text`,
                 like: 21
             }
-        ]
+        ],
+        newPostText: 'Placeholder'
     }
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-        text: postMessage,
-        like: 33
+        text: state.profilePage.newPostText,
+        like: 0
     }
     state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+
+export let changePost = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state)
 }
 
