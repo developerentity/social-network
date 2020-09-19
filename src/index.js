@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './data/state';
 
-let rerenderEntireTree = (state) => {
+let updateEntireTree = (state) => {
   
   ReactDOM.render(
     
@@ -20,8 +20,8 @@ let rerenderEntireTree = (state) => {
   );
 }
 
-rerenderEntireTree(store.getState())
-store.subscribe(rerenderEntireTree)
+updateEntireTree(store.getState())
+store.subscribe(updateEntireTree)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

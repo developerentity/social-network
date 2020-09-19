@@ -1,5 +1,5 @@
 let store = {
-    _rerenderEntireTree() {
+    _callSubscriber() {
         console.log("Changed")
     },
     _state: {
@@ -60,16 +60,16 @@ let store = {
         }
         this._state.profilePage.postsData.push(newPost)
         this._state.profilePage.newPostText = ''
-        this._rerenderEntireTree(this._state)
+        this._callSubscriber(this._state)
     },
 
     changePost(newText) {
         this._state.profilePage.newPostText = newText;
-        this._rerenderEntireTree(this._state)
+        this._callSubscriber(this._state)
     },
 
     subscribe(observer) {
-        this._rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     }
 }
 
