@@ -26,8 +26,7 @@ function App(props) {
             <Route path='/profile'>
               <Profile 
                 profilePage={props.state.profilePage}
-                addPost={props.addPost}
-                changePost={props.changePost}
+                dispatch={props.dispatch}
               />
             </Route>
             <Route path='/messages'>
