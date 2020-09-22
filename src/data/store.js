@@ -1,3 +1,6 @@
+const ADD_POST = "ADD-POST";
+const CHANGE_POST = "CHANGE-POST";
+
 let store = {
     _callSubscriber() {
         console.log("Changed")
@@ -56,7 +59,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let newPost = {
                 avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
                 text: this._state.profilePage.newPostText,
@@ -66,11 +69,18 @@ let store = {
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
         }
-        else if (action.type === "CHANGE-POST") {
+        else if (action.type === CHANGE_POST) {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state)
         }
     }
+}
+
+export const actionCreatorAddPost = () => {
+    return { type: ADD_POST }
+};
+export const actionCreatorChangePost = (text) => {
+    return { type: CHANGE_POST, newText: text }
 }
 
 export default store;

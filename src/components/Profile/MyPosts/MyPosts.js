@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
+import { actionCreatorAddPost, actionCreatorChangePost } from './../../../data/store';
 
 const MyPosts = (props) => {
 
@@ -15,13 +16,13 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        let action = { type: "ADD-POST" };
+        let action = actionCreatorAddPost();
         props.dispatch(action);
     }
     
     let onChangePost = () => {
         let text = newPostElement.current.value;
-        let action = { type: "CHANGE-POST", newText: text };
+        let action = actionCreatorChangePost(text);
         props.dispatch(action)
     }
 
