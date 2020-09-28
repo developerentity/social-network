@@ -45,7 +45,7 @@ const Messages = (props) => {
                     <textarea
                         ref={newPostElement}
                         onChange={onChangeMessage}
-                        value={props.newMessageText}
+                        value={props.messagePage.newMessageText}
                     />
                 </div>
                 <button onClick={addMessage}> Sent message </button>
