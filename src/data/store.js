@@ -1,7 +1,6 @@
-const ADD_POST = "ADD-POST";
-const CHANGE_POST = "CHANGE-POST";
-const ADD_MESSAGE = "ADD-MESSAGE";
-const CHANGE_MESSAGE = "CHANGE-MESSAGE";
+import dialogsReducer from './dialogsReducer';
+import profileReducer from './profileReducer';
+// import sidebarReducer from './sidebarReducer';
 
 let store = {
     _callSubscriber() {
@@ -62,46 +61,10 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-                text: this._state.profilePage.newPostText,
-                like: 0
-            }
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === CHANGE_POST) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                m: this._state.messagePage.newMessageText
-            }
-            this._state.messagePage.messagesData.push(newMessage)
-            this._state.messagePage.newMessageText = ''
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === CHANGE_MESSAGE) {
-            this._state.messagePage.newMessageText = action.newText
-            this._callSubscriber(this._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagePage = dialogsReducer(this._state.messagePage, action)
+        this._callSubscriber(this._state)
     }
-}
-
-export const actionCreatorAddPost = () => {
-    return { type: ADD_POST }
-};
-export const actionCreatorChangePost = (text) => {
-    return { type: CHANGE_POST, newText: text }
-}
-export const actionCreatorAddMessage = () => {
-    return { type: ADD_MESSAGE }
-}
-export const actionCreatorChangeMessage = (text) => {
-    return { type: CHANGE_MESSAGE, newText: text }
 }
 
 export default store;

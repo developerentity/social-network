@@ -5,7 +5,7 @@ import Message from './Message/Message';
 import {
     actionCreatorAddMessage,
     actionCreatorChangeMessage
-} from './../../data/store';
+} from './../../data/dialogsReducer';
 
 const Messages = (props) => {
 
