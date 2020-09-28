@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_POST = "CHANGE-POST";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const CHANGE_MESSAGE = "CHANGE-MESSAGE";
 
 let store = {
     _callSubscriber() {
@@ -17,7 +19,8 @@ let store = {
                 { m: "First message to Dev" },
                 { m: "Second random message" },
                 { m: "Third crazy message" }
-            ]
+            ],
+            newMessageText: "Placeholder"
         },
         profilePage: {
             postsData: [
@@ -73,6 +76,18 @@ let store = {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state)
         }
+        else if (action.type === ADD_MESSAGE) {
+            let newMessage = {
+                m: this._state.messagePage.newMessageText
+            }
+            this._state.messagePage.messagesData.push(newMessage)
+            this._state.messagePage.newMessageText = ''
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === CHANGE_MESSAGE) {
+            this._state.messagePage.newMessageText = action.newText
+            this._callSubscriber(this._state)
+        }
     }
 }
 
@@ -81,6 +96,12 @@ export const actionCreatorAddPost = () => {
 };
 export const actionCreatorChangePost = (text) => {
     return { type: CHANGE_POST, newText: text }
+}
+export const actionCreatorAddMessage = () => {
+    return { type: ADD_MESSAGE }
+}
+export const actionCreatorChangeMessage = (text) => {
+    return { type: CHANGE_MESSAGE, newText: text }
 }
 
 export default store;
