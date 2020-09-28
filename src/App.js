@@ -31,9 +31,7 @@ function App(props) {
             </Route>
             <Route path='/messages'>
               <Messages
-                dialogsData={props.state.messagePage.dialogsData}
-                messagesData={props.state.messagePage.messagesData}
-                newMessageText={props.state.messagePage.newMessageText}
+                messagePage={props.state.messagePage}
                 dispatch={props.dispatch}
               />
             </Route>

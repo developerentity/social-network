@@ -9,10 +9,10 @@ import {
 
 const Messages = (props) => {
 
-    let dialogsElements = props.dialogsData
+    let dialogsElements = props.messagePage.dialogsData
         .map(person => <DialogItem key={person.id} id={person.id} name={person.name} />)
 
-    let messagesElements = props.messagesData
+    let messagesElements = props.messagePage.messagesData
         .map(message => <Message key={message.m.toString()} message={message.m} />)
 
     let newPostElement = React.createRef();
