@@ -1,5 +1,5 @@
-const ADD_POST = "ADD-POST";
-const CHANGE_POST = "CHANGE-POST";
+const ADD_POST = "ADD_POST";
+const CHANGE_POST = "CHANGE_POST";
 
 export const actionCreatorAddPost = () => {
     return { type: ADD_POST }
@@ -10,20 +10,22 @@ export const actionCreatorChangePost = (text) => {
 
 const profileReducer = (store, action) => {
 
-    if (action.type === ADD_POST) {
-        let newPost = {
-            avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-            text: store.newPostText,
-            like: 0
-        }
-        store.postsData.push(newPost)
-        store.newPostText = ''
+    switch (action.type) {
+        case ADD_POST:
+            let newPost = {
+                avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
+                text: store.newPostText,
+                like: 0
+            }
+            store.postsData.push(newPost)
+            store.newPostText = ''
+            return store
+        case CHANGE_POST:
+            store.newPostText = action.newText;
+            return store
+        default:
+            return store
     }
-    else if (action.type === CHANGE_POST) {
-        store.newPostText = action.newText;
-    }
-
-    return store;
 }
 
 export default profileReducer;

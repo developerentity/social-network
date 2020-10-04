@@ -1,5 +1,5 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
-const CHANGE_MESSAGE = "CHANGE-MESSAGE";
+const ADD_MESSAGE = "ADD_MESSAGE";
+const CHANGE_MESSAGE = "CHANGE_MESSAGE";
 
 export const actionCreatorAddMessage = () => {
     return { type: ADD_MESSAGE }
@@ -10,18 +10,20 @@ export const actionCreatorChangeMessage = (text) => {
 
 const dialogsReducer = (store, action) => {
 
-    if (action.type === ADD_MESSAGE) {
-        let newMessage = {
-            m: store.newMessageText
-        }
-        store.messagesData.push(newMessage)
-        store.newMessageText = ''
+    switch (action.type) {
+        case ADD_MESSAGE:
+            let newMessage = {
+                m: store.newMessageText
+            }
+            store.messagesData.push(newMessage)
+            store.newMessageText = ''
+            return store
+        case CHANGE_MESSAGE:
+            store.newMessageText = action.newText
+            return store
+        default:
+            return store
     }
-    else if (action.type === CHANGE_MESSAGE) {
-        store.newMessageText = action.newText
-    }
-
-    return store;
 }
 
 export default dialogsReducer;
