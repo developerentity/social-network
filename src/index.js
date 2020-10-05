@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './components/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './data/store';
+import store from './redux/store';
 
 let updateEntireTree = (state) => {
   

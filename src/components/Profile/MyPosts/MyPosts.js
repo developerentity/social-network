@@ -4,7 +4,7 @@ import Post from './Post/Post';
 import {
     actionCreatorAddPost,
     actionCreatorChangePost
-} from './../../../data/profileReducer';
+} from './../../../redux/profileReducer';
 
 const MyPosts = (props) => {
 
