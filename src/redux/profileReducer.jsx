@@ -39,23 +39,30 @@ const initialState = {
     newPostText: 'Placeholder'
 };
 
-const profileReducer = (store = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 avatar: `https://coubsecure-s.akamaihd.net/get/b81/p/coub/simple/cw_timeline_pic/691c3a60c6a/d02de237a879bceafbd0e/med_1542127707_image.jpg`,
-                text: store.newPostText,
+                text: state.newPostText,
                 like: 0
             }
-            store.postsData.push(newPost)
-            store.newPostText = ''
-            return store
-        case CHANGE_POST:
-            store.newPostText = action.newText;
-            return store
+            let stateCopy = { ...state }
+            stateCopy.postsData = [...state.postsData]
+            stateCopy.postsData.push(newPost)
+            stateCopy.newPostText = ''
+            return stateCopy
+        }
+
+        case CHANGE_POST: {
+            let stateCopy = { ...state }
+            stateCopy.postsData = [...state.postsData]
+            stateCopy.newPostText = action.newText;
+            return stateCopy
+        }
         default:
-            return store
+            return state
     }
 }
 

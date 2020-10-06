@@ -23,21 +23,27 @@ const initialState = {
     newMessageText: "Placeholder"
 };
 
-const dialogsReducer = (store = initialState, action) => {
+const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMessage = {
-                m: store.newMessageText
+                m: state.newMessageText
             }
-            store.messagesData.push(newMessage)
-            store.newMessageText = ''
-            return store
-        case CHANGE_MESSAGE:
-            store.newMessageText = action.newText
-            return store
+            let stateCopy = { ...state }
+            stateCopy.messagesData = [...state.messagesData]
+            stateCopy.messagesData.push(newMessage)
+            stateCopy.newMessageText = ''
+            return stateCopy
+        }
+        case CHANGE_MESSAGE: {
+            let stateCopy = { ...state }
+            stateCopy.messagesData = [...state.messagesData]
+            stateCopy.newMessageText = action.newText
+            return stateCopy
+        }
         default:
-            return store
+            return state
     }
 }
 
