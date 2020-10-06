@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from './components/Footer/Footer';
 import Profile from './components/Profile/Profile';
 import Nav from './components/Nav/Nav';
-import Messages from './components/Messages/Messages';
+import MessagesContainer from './components/Messages/MessagesContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
@@ -30,7 +30,7 @@ function App(props) {
               />
             </Route>
             <Route path='/messages'>
-              <Messages
+              <MessagesContainer
                 messagePage={props.state.messagePage}
                 dispatch={props.dispatch}
               />
