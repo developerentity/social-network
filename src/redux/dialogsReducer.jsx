@@ -38,7 +38,6 @@ const dialogsReducer = (state = initialState, action) => {
         }
         case CHANGE_MESSAGE: {
             let stateCopy = { ...state }
-            stateCopy.messagesData = [...state.messagesData]
             stateCopy.newMessageText = action.newText
             return stateCopy
         }
