@@ -23,7 +23,7 @@ function App() {
           <Header />
           <Nav />
           <div className='content'>
-            <Route path='/profile'>
+            <Route exact path='/'>
               <Profile />
             </Route>
             <Route path='/messages'>

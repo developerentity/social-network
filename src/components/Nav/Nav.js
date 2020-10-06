@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <nav className={style.nav}>
             <div className={style.item}>
-                <NavLink to='/profile' activeClassName={style.activeName}>
+                <NavLink exact to='/' activeClassName={style.activeName}>
                     Profile
                 </NavLink>
             </div>
