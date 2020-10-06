@@ -4,27 +4,36 @@ import {
     actionCreatorAddMessage,
     actionCreatorChangeMessage
 } from './../../redux/dialogsReducer';
+import StoreContext from '../../StoreContext';
 
-const MessagesContainer = (props) => {
-
-    const addMessageFunc = () => {
-        let action = actionCreatorAddMessage()
-        props.dispatch(action)
-    }
-
-    const changeMessageFunc = (body) => {
-        let action = actionCreatorChangeMessage(body)
-        props.dispatch(action)
-    }
+const MessagesContainer = () => {
 
     return (
-        <Messages 
-            addMessageFunc={addMessageFunc}
-            changeMessageFunc={changeMessageFunc}
-            dialogsData={props.messagePage.dialogsData}
-            messagesData={props.messagePage.messagesData}
-            newMessageText={props.messagePage.newMessageText}
-        />
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    const state = store.getState();
+                    const addMessageFunc = () => {
+                        const action = actionCreatorAddMessage()
+                        store.dispatch(action)
+                    }
+
+                    const changeMessageFunc = (body) => {
+                        const action = actionCreatorChangeMessage(body)
+                        store.dispatch(action)
+                    }
+                    return (
+                        <Messages
+                            addMessageFunc={addMessageFunc}
+                            changeMessageFunc={changeMessageFunc}
+                            dialogsData={state.messagePage.dialogsData}
+                            messagesData={state.messagePage.messagesData}
+                            newMessageText={state.messagePage.newMessageText}
+                        />
+                    )
+                }
+            }
+        </StoreContext.Consumer>
     )
 }
 

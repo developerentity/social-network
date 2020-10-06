@@ -14,7 +14,7 @@ import {
   Route
 } from 'react-router-dom'
 
-function App(props) {
+function App() {
 
   return (
     <div className="container">
@@ -24,16 +24,10 @@ function App(props) {
           <Nav />
           <div className='content'>
             <Route path='/profile'>
-              <Profile 
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch}
-              />
+              <Profile />
             </Route>
             <Route path='/messages'>
-              <MessagesContainer
-                messagePage={props.state.messagePage}
-                dispatch={props.dispatch}
-              />
+              <MessagesContainer />
             </Route>
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />

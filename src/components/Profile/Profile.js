@@ -3,15 +3,12 @@ import style from './Profile.module.css';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-const Profile = (props) => {
+const Profile = () => {
 
     return (
         <article className={style.article}>       
             <ProfileInfo />
-            <MyPostsContainer
-                profilePage={props.profilePage}
-                dispatch={props.dispatch}
-            />
+            <MyPostsContainer />
         </article>
     )
 }
