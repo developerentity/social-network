@@ -9,7 +9,7 @@ const Users = (props) => {
                     id: 1,
                     name: 'Denny',
                     avatarUrl: 'https://icdn.lenta.ru/images/2017/07/05/13/20170705135653293/pic_63903ceefbe163ea4ce48ab3ad502474.jpg',
-                    isFollow: false,
+                    followed: false,
                     status: 'Some status text',
                     location: {
                         country: 'USA',
@@ -20,7 +20,7 @@ const Users = (props) => {
                     id: 2,
                     name: 'Denny',
                     avatarUrl: 'https://icdn.lenta.ru/images/2017/07/05/13/20170705135653293/pic_63903ceefbe163ea4ce48ab3ad502474.jpg',
-                    isFollow: false,
+                    followed: false,
                     status: 'Some status text',
                     location: {
                         country: 'USA',
@@ -31,7 +31,7 @@ const Users = (props) => {
                     id: 3,
                     name: 'Denny',
                     avatarUrl: 'https://icdn.lenta.ru/images/2017/07/05/13/20170705135653293/pic_63903ceefbe163ea4ce48ab3ad502474.jpg',
-                    isFollow: false,
+                    followed: false,
                     status: 'Some status text',
                     location: {
                         country: 'USA',
@@ -51,7 +51,7 @@ const Users = (props) => {
                             <img src={user.avatarUrl} alt='...' />
                         </div>
                         <div>
-                            {user.isFollow
+                            {user.followed
                                 ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button>
                                 : <button onClick={() => props.follow(user.id)}>Follow</button>}
                         </div>
