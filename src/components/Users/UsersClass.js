@@ -1,48 +1,16 @@
 import React from 'react';
+import Axios from 'axios';
 
 class Users extends React.Component {
 
     constructor(props) {
-
+        
         super(props)
 
-        this.props.setUsers(
-            [
-                {
-                    id: 1,
-                    name: 'Denny',
-                    avatarUrl: 'https://icdn.lenta.ru/images/2017/07/05/13/20170705135653293/pic_63903ceefbe163ea4ce48ab3ad502474.jpg',
-                    followed: false,
-                    status: 'Some status text',
-                    location: {
-                        country: 'USA',
-                        city: 'California',
-                    }
-                },
-                {
-                    id: 2,
-                    name: 'Denny',
-                    avatarUrl: 'https://icdn.lenta.ru/images/2017/07/05/13/20170705135653293/pic_63903ceefbe163ea4ce48ab3ad502474.jpg',
-                    followed: false,
-                    status: 'Some status text',
-                    location: {
-                        country: 'USA',
-                        city: 'California',
-                    }
-                },
-                {
-                    id: 3,
-                    name: 'Denny',
-                    avatarUrl: 'https://icdn.lenta.ru/images/2017/07/05/13/20170705135653293/pic_63903ceefbe163ea4ce48ab3ad502474.jpg',
-                    followed: false,
-                    status: 'Some status text',
-                    location: {
-                        country: 'USA',
-                        city: 'California',
-                    }
-                }
-            ]
-        )
+        Axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(res => {
+                this.props.setUsers(res.data.items)
+            })
     }
 
     render() {
@@ -65,8 +33,8 @@ class Users extends React.Component {
                             <div>{user.status}</div>
                         </div>
                         <div>
-                            <div>{user.location.country}</div>
-                            <div>{user.location.city}</div>
+                            <div>{user.location?.country}</div>
+                            <div>{user.location?.city}</div>
                         </div>
                     </div>
                 </div>)}
