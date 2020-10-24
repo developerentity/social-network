@@ -10,6 +10,11 @@ const Nav = () => {
                     Profile
                 </NavLink>
             </div>
+            <div className={style.item}>
+                <NavLink exact to='/users' activeClassName={style.activeName}>
+                    Users
+                </NavLink>
+            </div>
             <div  className={style.item}>
                 <NavLink to='/messages' activeClassName={style.activeName}>
                     Messages

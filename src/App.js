@@ -30,11 +30,13 @@ function App() {
             <Route path='/messages'>
               <MessagesContainer />
             </Route>
+            <Route path='/users'>
+              <UsersContainer />
+            </Route>
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
             <Route path='/shuffle' component={Shuffle} />
-            <Route path='/users' component={UsersContainer} />
           </div>
           <Footer />
         </Router>
