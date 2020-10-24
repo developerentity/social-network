@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Users = (props) => {
+class Users extends React.Component {
 
-    if (props.users.length === 0) {
-        props.setUsers(
+    constructor(props) {
+
+        super(props)
+
+        this.props.setUsers(
             [
                 {
                     id: 1,
@@ -42,18 +45,18 @@ const Users = (props) => {
         )
     }
 
-    return (
-        <div>
-            {
-                props.users.map(user => <div key={user.id}>
+    render() {
+        return (
+            <div>
+                {this.props.users.map(user => <div key={user.id}>
                     <div>
                         <div>
                             <img src={user.avatarUrl} alt='...' />
                         </div>
                         <div>
                             {user.followed
-                                ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button>
-                                : <button onClick={() => props.follow(user.id)}>Follow</button>}
+                                ? <button onClick={() => this.props.unfollow(user.id)}>Unfollow</button>
+                                : <button onClick={() => this.props.follow(user.id)}>Follow</button>}
                         </div>
                     </div>
                     <div>
@@ -67,8 +70,9 @@ const Users = (props) => {
                         </div>
                     </div>
                 </div>)}
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default Users;
