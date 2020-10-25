@@ -32,8 +32,8 @@ const Users = (props) => {
 
             {users.map(user => <div key={user.id}>
                 <div>
-                    <div>
-                        {/* <img src={user.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt='...' /> */}
+                    <div className={style.usersAvatarWrap}>
+                        <img src={user.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt='...' />
                     </div>
                     <div>
                         {user.followed
