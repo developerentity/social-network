@@ -1,11 +1,15 @@
 const ADD_POST = "ADD_POST";
 const CHANGE_POST = "CHANGE_POST";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 export const actionCreatorAddPost = () => {
     return { type: ADD_POST }
 }
 export const actionCreatorChangePost = (text) => {
     return { type: CHANGE_POST, newText: text }
+}
+export const setUserProfile = (profile) => {
+    return { type: SET_USER_PROFILE, profile }
 }
 
 const initialState = {
@@ -36,7 +40,8 @@ const initialState = {
             like: 21
         }
     ],
-    newPostText: 'Placeholder'
+    newPostText: 'Placeholder',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -60,6 +65,11 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.newPostText = action.newText;
             return stateCopy
         }
+
+        case SET_USER_PROFILE: {
+            return { ...state, profile: action.profile }
+        }
+
         default:
             return state
     }

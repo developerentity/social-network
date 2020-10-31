@@ -2,7 +2,6 @@ import React from 'react';
 import './components/css/App.css';
 import Header from "./components/Header/Header";
 import Footer from './components/Footer/Footer';
-import Profile from './components/Profile/Profile';
 import Nav from './components/Nav/Nav';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import News from './components/News/News';
@@ -14,6 +13,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 function App() {
 
@@ -24,8 +24,8 @@ function App() {
           <Header />
           <Nav />
           <div className='content'>
-            <Route exact path='/'>
-              <Profile />
+            <Route path='/profile/:userId?'>
+              <ProfileContainer />
             </Route>
             <Route path='/messages'>
               <MessagesContainer />

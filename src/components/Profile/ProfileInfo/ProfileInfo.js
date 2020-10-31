@@ -1,9 +1,15 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
 import wallpaper from './../../img/wall.jpg'
-import avatar from './../../img/images.png';
+import Preloader from '../../common/preloader/Preloader';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    if (!props.profile) {
+        return (
+            <Preloader />
+        )
+    }
     return (
         <>
             <div className={style.wallpaper}>
@@ -12,7 +18,7 @@ const ProfileInfo = () => {
 
             <div className={style.wrap}>
                 <div className={style.avatar}>
-                    <img src={avatar} alt="..." />
+                    <img src={props.profile.photos.large} alt="..." />
                 </div>
                 <h3>Article</h3>
                 loremLorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla quis felis

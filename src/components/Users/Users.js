@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import style from './Users.module.css';
 
 const Users = (props) => {
@@ -33,7 +34,9 @@ const Users = (props) => {
             {users.map(user => <div key={user.id}>
                 <div>
                     <div className={style.usersAvatarWrap}>
-                        <img src={user.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt='...' />
+                        <NavLink to={`/profile/${user.id}`} >
+                            <img src={user.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt='...' />
+                        </NavLink>
                     </div>
                     <div>
                         {user.followed
