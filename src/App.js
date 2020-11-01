@@ -1,6 +1,6 @@
 import React from 'react';
 import './components/css/App.css';
-import Header from "./components/Header/Header";
+import HeaderContainer from './components/Header/HeaderContainer';
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
 import MessagesContainer from './components/Messages/MessagesContainer';
@@ -21,7 +21,7 @@ function App() {
     <div className="container">
       <div className="grid">
         <Router>
-          <Header />
+          <HeaderContainer />
           <Nav />
           <div className='content'>
             <Route path='/profile/:userId?'>
