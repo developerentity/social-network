@@ -11,7 +11,9 @@ const Users = (props) => {
         users,
         follow,
         unfollow,
-        onPageChanged } = props;
+        onPageChanged,
+        isFollowingProgress,
+        setFollowingProgress } = props;
 
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = [];
@@ -41,21 +43,25 @@ const Users = (props) => {
                     </div>
                     <div>
                         {user.followed
-                            ? <button onClick={() => {
+                            ? <button disabled={isFollowingProgress.some(id => id === user.id)} onClick={() => {
+                                setFollowingProgress(true, user.id)
                                 usersAPI.unfollow(user.id)
                                     .then(res => {
                                         if (res.data.resultCode === 0) {
                                             unfollow(user.id)
                                         }
+                                        setFollowingProgress(false, user.id)
                                     })
                             }}>Unfollow</button>
 
-                            : <button onClick={() => {
+                            : <button disabled={isFollowingProgress.some(id => id === user.id)} onClick={() => {
+                                setFollowingProgress(true, user.id)
                                 usersAPI.follow(user.id)
                                     .then(res => {
                                         if (res.data.resultCode === 0) {
                                             follow(user.id)
                                         }
+                                        setFollowingProgress(false, user.id)
                                     })
                             }}>Follow</button>}
                     </div>
