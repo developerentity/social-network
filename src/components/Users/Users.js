@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './Users.module.css';
@@ -40,8 +41,33 @@ const Users = (props) => {
                     </div>
                     <div>
                         {user.followed
-                            ? <button onClick={() => unfollow(user.id)}>Unfollow</button>
-                            : <button onClick={() => follow(user.id)}>Follow</button>}
+                            ? <button onClick={() => {
+                                Axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API-KEY': '578a5f36-0f95-4a91-a1d4-86904b25ee94'
+                                    }
+                                })
+                                    .then(res => {
+                                        if (res.data.resultCode === 0) {
+                                            unfollow(user.id)
+                                        }
+                                    })
+                            }}>Unfollow</button>
+
+                            : <button onClick={() => {
+                                Axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API-KEY': '578a5f36-0f95-4a91-a1d4-86904b25ee94'
+                                    }
+                                })
+                                    .then(res => {
+                                        if (res.data.resultCode === 0) {
+                                            follow(user.id)
+                                        }
+                                    })
+                            }}>Follow</button>}
                     </div>
                 </div>
                 <div>
