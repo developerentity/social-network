@@ -97,6 +97,10 @@ export const getUsers = (currentPage, pageSize) => {
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
             })
+            .catch(err => {
+                console.error(err)
+                dispatch(toggleIsFetching(false))
+            })
     }
 }
 export const unfollow = (userId) => {
@@ -109,6 +113,10 @@ export const unfollow = (userId) => {
                 }
                 dispatch(setFollowingProgress(false, userId))
             })
+            .catch(err => {
+                console.error(err)
+                dispatch(setFollowingProgress(false, userId))
+            })
     }
 }
 export const follow = (userId) => {
@@ -119,6 +127,10 @@ export const follow = (userId) => {
                 if (res.data.resultCode === 0) {
                     dispatch(followSuccess(userId))
                 }
+                dispatch(setFollowingProgress(false, userId))
+            })
+            .catch(err => {
+                console.error(err)
                 dispatch(setFollowingProgress(false, userId))
             })
     }
