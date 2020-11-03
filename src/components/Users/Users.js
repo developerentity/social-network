@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { usersAPI } from '../../api/api';
 import style from './Users.module.css';
 
 const Users = (props) => {
@@ -12,8 +11,7 @@ const Users = (props) => {
         follow,
         unfollow,
         onPageChanged,
-        isFollowingProgress,
-        setFollowingProgress } = props;
+        isFollowingProgress } = props;
 
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = [];
@@ -43,27 +41,14 @@ const Users = (props) => {
                     </div>
                     <div>
                         {user.followed
-                            ? <button disabled={isFollowingProgress.some(id => id === user.id)} onClick={() => {
-                                setFollowingProgress(true, user.id)
-                                usersAPI.unfollow(user.id)
-                                    .then(res => {
-                                        if (res.data.resultCode === 0) {
-                                            unfollow(user.id)
-                                        }
-                                        setFollowingProgress(false, user.id)
-                                    })
-                            }}>Unfollow</button>
-
-                            : <button disabled={isFollowingProgress.some(id => id === user.id)} onClick={() => {
-                                setFollowingProgress(true, user.id)
-                                usersAPI.follow(user.id)
-                                    .then(res => {
-                                        if (res.data.resultCode === 0) {
-                                            follow(user.id)
-                                        }
-                                        setFollowingProgress(false, user.id)
-                                    })
-                            }}>Follow</button>}
+                            ? <button
+                                onClick={() => { unfollow(user.id) }}
+                                disabled={isFollowingProgress.some(id => id === user.id)}>
+                                Unfollow </button>
+                            : <button
+                                onClick={() => { follow(user.id) }}
+                                disabled={isFollowingProgress.some(id => id === user.id)}>
+                                Follow </button>}
                     </div>
                 </div>
                 <div>
