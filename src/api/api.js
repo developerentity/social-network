@@ -10,10 +10,8 @@ const instance = Axios.create({
 
 export const usersAPI = {
     async getUsers(currentPage = 1, pageSize = 5) {
-        const res = await instance.get(`users?page=${currentPage}&count=${pageSize}`, {
-            withCredentials: true
-        });
-        return res.data;
+        const res = await instance.get(`users?page=${currentPage}&count=${pageSize}`)
+        return res.data
     },
     async getProfile(userId) {
         const res = await instance.get(`profile/${userId}`)
@@ -25,8 +23,9 @@ export const usersAPI = {
     unfollow(userId) {
         return instance.delete(`follow/${userId}`)
     },
+}
+export const authAPI = {
     auth() {
         return instance.get(`auth/me`)
     }
 }
-
