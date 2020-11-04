@@ -14,6 +14,7 @@ import {
   Route
 } from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer';
+import Login from './components/Login/Login';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
             <Route path='/shuffle' component={Shuffle} />
+            <Route path='/login' component={Login} />
           </div>
           <Footer />
         </Router>
