@@ -13,10 +13,6 @@ export const usersAPI = {
         const res = await instance.get(`users?page=${currentPage}&count=${pageSize}`)
         return res.data
     },
-    getProfile(userId) {
-        console.warn('Obsolete method. Use profileAPI obj')
-        return profileAPI.getProfile(userId)
-    },
     follow(userId) {
         return instance.post(`follow/${userId}`)
     },
