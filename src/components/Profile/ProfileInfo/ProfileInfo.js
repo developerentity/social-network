@@ -1,7 +1,8 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
-import wallpaper from './../../img/wall.jpg'
+// import wallpaper from './../../img/wall.jpg'
 import Preloader from '../../common/preloader/Preloader';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
 
@@ -16,14 +17,15 @@ const ProfileInfo = (props) => {
     }
     return (
         <>
-            <div className={style.wallpaper}>
+            {/* <div className={style.wallpaper}>
                 <img src={wallpaper} alt="..." />
-            </div>
+            </div> */}
 
             <div className={style.wrap}>
                 <div className={style.avatar}>
                     <img src={profile.photos.large} alt="..." />
                 </div>
+                <ProfileStatus />
 
                 <div>
                     <h3>{profile.fullName}</h3>
