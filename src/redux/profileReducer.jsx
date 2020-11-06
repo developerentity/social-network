@@ -90,7 +90,7 @@ export const getProfile = (userId) => {
     return (dispatch) => {
         profileAPI.getProfile(userId)
             .then(data => {
-                dispatch(setUserProfile(data))
+                dispatch(setUserProfile(data.data))
             })
             .catch(err => console.error(err))
     }
