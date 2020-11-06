@@ -6,10 +6,12 @@ import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
 
-    const { profile } = props;
+    const {
+        profile,
+        userStatus,
+        getUpdateStatus
+    } = props;
 
-    console.log(profile)
-    
     if (!profile) {
         return (
             <Preloader />
@@ -25,7 +27,10 @@ const ProfileInfo = (props) => {
                 <div className={style.avatar}>
                     <img src={profile.photos.large} alt="..." />
                 </div>
-                <ProfileStatus />
+                <ProfileStatus
+                    userStatus={userStatus}
+                    getUpdateStatus={getUpdateStatus}
+                />
 
                 <div>
                     <h3>{profile.fullName}</h3>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 
-const ProfileStatus = () => {
+const ProfileStatus = (props) => {
 
+    const { userStatus, getUpdateStatus } = props;
     const [editMode, setEditMode] = useState(false)
-    const [tempStatus, setTempStatus] = useState('some text')
+    const [tempStatus, setTempStatus] = useState(userStatus)
 
     return (
         <>
@@ -14,13 +15,17 @@ const ProfileStatus = () => {
                         style={{ cursor: 'pointer' }}
                         onDoubleClick={() => setEditMode(true)}
                     >
-                        {tempStatus}
+                        {userStatus || 'There mey be your status'}
                     </span>
                 </div>}
             {editMode &&
                 <div>
                     <input
-                        onBlur={() => setEditMode(false)}
+                        onBlur={() => {
+                            setEditMode(false)
+                            getUpdateStatus(tempStatus)
+
+                        }}
                         autoFocus={true}
                         value={tempStatus}
                         onChange={(e) => setTempStatus(e.target.value)}

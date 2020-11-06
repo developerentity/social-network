@@ -1,8 +1,9 @@
-import { usersAPI } from "../api/api";
+import { profileAPI, usersAPI } from "../api/api";
 
 const ADD_POST = "ADD_POST";
 const CHANGE_POST = "CHANGE_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_USER_STATUS = "SET_USER_STATUS";
 
 export const actionCreatorAddPost = () => {
     return { type: ADD_POST }
@@ -12,6 +13,9 @@ export const actionCreatorChangePost = (text) => {
 }
 const setUserProfile = (profile) => {
     return { type: SET_USER_PROFILE, profile }
+}
+const setUserStatus = (statusText) => {
+    return { type: SET_USER_STATUS, statusText }
 }
 
 const initialState = {
@@ -43,7 +47,8 @@ const initialState = {
         }
     ],
     newPostText: 'Placeholder',
-    profile: null
+    profile: null,
+    userStatus: 'Some random status text'
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -72,6 +77,10 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, profile: action.profile }
         }
 
+        case SET_USER_STATUS: {
+            return { ...state, userStatus: action.statusText }
+        }
+
         default:
             return state
     }
@@ -82,6 +91,26 @@ export const getProfile = (userId) => {
         usersAPI.getProfile(userId)
             .then(data => {
                 dispatch(setUserProfile(data))
+            })
+            .catch(err => console.error(err))
+    }
+}
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(res => {
+                dispatch(setUserStatus(res.data))
+            })
+            .catch(err => { console.error(err) })
+    }
+}
+export const getUpdateStatus = (statusText) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(statusText)
+            .then(res => {
+                if (res.data.resultCode === 0) {
+                    dispatch(setUserStatus(res.res))
+                }
             })
             .catch(err => console.error(err))
     }

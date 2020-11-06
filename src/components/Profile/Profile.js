@@ -9,6 +9,8 @@ const Profile = (props) => {
         <article className={style.article}>
             <ProfileInfo
                 profile={props.profile}
+                userStatus={props.userStatus}
+                getUpdateStatus={props.getUpdateStatus}
             />
             <MyPostsContainer />
         </article>
