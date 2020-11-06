@@ -1,4 +1,4 @@
-import { profileAPI, usersAPI } from "../api/api";
+import { profileAPI } from "../api/api";
 
 const ADD_POST = "ADD_POST";
 const CHANGE_POST = "CHANGE_POST";
@@ -48,7 +48,7 @@ const initialState = {
     ],
     newPostText: 'Placeholder',
     profile: null,
-    userStatus: 'Some random status text'
+    userStatus: ''
 };
 
 const profileReducer = (state = initialState, action) => {

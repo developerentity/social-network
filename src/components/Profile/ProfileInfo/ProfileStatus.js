@@ -16,7 +16,9 @@ class ProfileStatus extends React.Component {
         this.setState({
             editMode: false
         })
-        this.props.getUpdateStatus(this.state.localStatus)
+        if (this.state.localStatus) {
+            this.props.getUpdateStatus(this.state.localStatus)
+        }
     }
     onStatusChange = (text) => {
         this.setState({
@@ -33,7 +35,7 @@ class ProfileStatus extends React.Component {
                             style={{ cursor: 'pointer' }}
                             onDoubleClick={() => this.activateEditMode()}
                         >
-                            {this.props.userStatus || 'There mey be status'}
+                            {this.props.userStatus || "Status did't update"}
                         </span>
                     </div>}
                 {this.state.editMode &&
