@@ -13,7 +13,9 @@ const Messages = (props) => {
         .map(message => <Message key={message.m.toString()} message={message.m} />)
 
     const addNewMessage = (val) => {
-        props.addMessageFunc(val.newMessageBody)
+        if (val.newMessageBody) {
+            props.addMessageFunc(val.newMessageBody)
+        }
     }
 
     return (
