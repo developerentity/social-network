@@ -3,6 +3,7 @@ import style from './Messages.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { Form, Field } from 'react-final-form'
+import { composeValidators, minLength, required } from '../../util/validators';
 
 const Messages = (props) => {
 
@@ -13,9 +14,7 @@ const Messages = (props) => {
         .map(message => <Message key={message.m.toString()} message={message.m} />)
 
     const addNewMessage = (val) => {
-        if (val.newMessageBody) {
-            props.addMessageFunc(val.newMessageBody)
-        }
+        props.addMessageFunc(val.newMessageBody)
     }
 
     return (
@@ -40,20 +39,43 @@ const Messages = (props) => {
 }
 
 const AddMessageForm = (props) => {
+
     return (
-        <Form
-            onSubmit={props.onSubmit}
-            render={({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <Field component='textarea' name='newMessageBody' placeholder='Enter message' />
-                    </div>
-                    <div>
-                        <button type='submit' > Sent message </button>
-                    </div>
-                </form>
-            )}
-        />
+        <>
+            <Form
+                onSubmit={props.onSubmit}
+                render={({ handleSubmit, form, submitting, pristine }) => (
+                    <form onSubmit={handleSubmit}>
+                        <Field
+                            name="newMessageBody"
+                            validate={composeValidators(required, minLength(3))}
+                        >
+                            {({ input, meta }) => (
+                                <div>
+                                    <label>New message</label>
+                                    <textarea {...input} placeholder="Enter message" />
+                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                </div>
+                            )}
+                        </Field>
+
+
+                        <div className="buttons">
+                            <button type="submit" disabled={submitting}>
+                                Submit
+                            </button>
+                            <button
+                                type="button"
+                                onClick={form.reset}
+                                disabled={submitting || pristine}
+                            >
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                )}
+            />
+        </>
     )
 }
 
