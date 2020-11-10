@@ -46,10 +46,10 @@ const LoginForm = (props) => {
                             component={'input'}
                         /> Remember me
 
-                        {/* {props.authFormError &&
+                        {props.authFormError &&
                             <div className={style.formSumError}>
                                 {props.authFormError}
-                            </div>} */}
+                            </div>}
                         <div>
                             <button type="submit">
                                 Submit
@@ -64,7 +64,8 @@ const LoginForm = (props) => {
 
 const mapStateToProps = (state) => {
     return ({
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        authFormError: state.auth.authFormError
     })
 }
 
