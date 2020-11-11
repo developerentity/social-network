@@ -41,7 +41,7 @@ const setAuthFormError = (error) => {
 
 export const getAuth = () => {
     return (dispatch) => {
-        authAPI.me()
+        return authAPI.me()
             .then(res => {
                 if (res.data.resultCode === 0) {
                     let { id, email, login } = res.data.data;
