@@ -1,6 +1,14 @@
-export const getUsersSelector = (state) => {
-    return state.usersPage.users.filter(item => true) 
-} // example sophisticated selector
+import { createSelector } from "reselect"
+
+const getUsers = (state) => {
+    return state.usersPage.users
+}
+export const getUsersSelector = createSelector(getUsers,
+    (items) => {
+        return items.filter(item => true)
+    }
+) // example sophisticated selector
+
 export const getPageSizeSelector = (state) => {
     return state.usersPage.pageSize
 }
