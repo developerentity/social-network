@@ -16,7 +16,7 @@ class ProfileStatus extends React.Component {
         this.setState({
             editMode: false
         })
-        if (this.state.localStatus) {
+        if (this.props.userStatus !== this.state.localStatus) {
             this.props.getUpdateStatus(this.state.localStatus)
         }
     }
@@ -24,6 +24,14 @@ class ProfileStatus extends React.Component {
         this.setState({
             localStatus: text
         })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.userStatus !== this.props.userStatus) {
+            this.setState({
+                localStatus: this.props.userStatus
+            })
+        }
     }
 
     render() {
@@ -35,17 +43,15 @@ class ProfileStatus extends React.Component {
                             style={{ cursor: 'pointer' }}
                             onDoubleClick={() => this.activateEditMode()}
                         >
-                            {this.props.userStatus || "Status did't update"}
+                            {this.props.userStatus || "enter status there"}
                         </span>
                     </div>}
                 {this.state.editMode &&
                     <div>
                         <input
-                            onBlur={() => {
-                                this.deactivateEditMode()
-                            }}
+                            onBlur={() => { this.deactivateEditMode() }}
                             autoFocus={true}
-                            value={this.localStatus}
+                            value={this.state.localStatus}
                             onChange={(e) => this.onStatusChange(e.target.value)}
                         />
                     </div>}
