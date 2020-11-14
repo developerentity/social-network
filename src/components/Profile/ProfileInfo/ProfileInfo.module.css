@@ -1,14 +1,33 @@
+.profile {
+    border-radius: 5px 5px 0 0;
+}
+
 .wallpaper {
-    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0 0;
 }
+
+.infoWrap img {
+    max-width: 150px;
+}
+
 .wrap {
-    padding: 20px;
+    border-radius: inherit;
+    padding: 2em;
 }
-.avatar { 
-    margin-right: 20px;
-    /* float: left; */
-    width: 80px;
+
+.contentWrap {
+    width: max-content;
+    padding: 1em;
+    background-color: rgba(241, 243, 245, .7);
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 22px 4px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 22px 4px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 22px 4px rgba(0, 0, 0, 1);
 }
-img {
-    max-width: 100%;
+
+.contentWrap {
+    text-align: center;
 }
