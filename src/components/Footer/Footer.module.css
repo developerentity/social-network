@@ -1,4 +1,7 @@
 .footer {
     grid-area: footer;
-    background-color: teal;
+    background-color: rgb(51, 53, 57);
+    border-radius: 5px 5px 0 0;
+    padding: 2em;
+    color: white;
 }
