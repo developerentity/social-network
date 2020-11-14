@@ -1,9 +1,24 @@
 .activePage {
-    color: tomato;
+    color: white;
 }
+
 .paginationBtn {
     padding-right: 10px;
 }
-.usersAvatarWrap {
+
+.usersWrap {
+    width: 60vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.userAvatarWrap img {
+    max-width: 100%;
     width: 100px;
+}
+
+.userWrap {
+    padding: 1em;
+    width: max-content;
+    text-align: center;
 }
