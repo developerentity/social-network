@@ -1,11 +1,46 @@
 .header {
     grid-area: header;
-    background-color: blue;
+    background-color: rgb(51, 53, 57);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: white;
+    border-radius: 0 0 5px 5px;
 }
-.loginNL {
+
+.header .headerText, .loginNL {
+    margin: auto 1em;
+}
+
+.headerText {
+    font-size: 1.5rem;
+}
+
+.loginNL .loginInput {
+    border-radius: 3px;
     float: right;
-    background-color: white;
-    padding: 1em;
-    border-radius: 10px;
-    position: sticky;
+    font-weight: 700;
+    -webkit-box-shadow: inset 0px 0px 5px 3px rgba(255, 255, 255, 0.4);
+    -moz-box-shadow: inset 0px 0px 5px 3px rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0px 0px 5px 3px rgba(255, 255, 255, 0.4);
+}
+
+.loginNL .loginInput .btn {
+    background-color: inherit;
+    cursor: pointer;
+    padding: .4em 2em;
+}
+
+.login:hover {
+    -webkit-box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.4);
+    -moz-box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.4);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.hide {
+    display: none;
 }
