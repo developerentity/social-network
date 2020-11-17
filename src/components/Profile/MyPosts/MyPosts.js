@@ -3,7 +3,7 @@ import { Form, Field } from 'react-final-form'
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
 
     let postsElements = props.postsData
         .map(post => <Post
@@ -28,7 +28,7 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+})
 
 const AddPostForm = (props) => {
     return (
