@@ -1,15 +1,13 @@
-.activePage {
+.usersWrap {
+    margin: 1em 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     color: white;
 }
 
-.paginationBtn {
-    padding-right: 10px;
-}
-
-.usersWrap {
-    width: 60vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.userItem {
+    display: flex;
+    justify-content: center;
 }
 
 .userAvatarWrap img {
@@ -18,7 +16,13 @@
 }
 
 .userWrap {
-    padding: 1em;
+    padding-top: 2em;
     width: max-content;
     text-align: center;
+}
+
+.paginationWrap {
+    margin: 3em 0 2em 0;
+    display: flex;
+    justify-content: center;
 }

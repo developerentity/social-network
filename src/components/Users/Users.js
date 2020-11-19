@@ -16,19 +16,8 @@ const Users = (props) => {
 
     return (
         <div>
-            <div>
-                <Pagination
-                    activePage={currentPage}
-                    itemsCountPerPage={pageSize}
-                    totalItemsCount={totalUsersCount}
-                    pageRangeDisplayed={5}
-                    onChange={onPageChanged}
-                    itemClass='page-item'
-                    linkClass='page-link'
-                />
-            </div>
             <div className={style.usersWrap}>
-                {users.map(user => <div key={user.id}>
+                {users.map(user => <div key={user.id} className={style.userItem}>
                     <div className={style.userWrap}>
                         <div className={style.userAvatarWrap}>
                             <NavLink to={`/profile/${user.id}`} >
@@ -42,16 +31,29 @@ const Users = (props) => {
                         <div>
                             {user.followed
                                 ? <button
+                                    className='btn btn-light'
                                     onClick={() => { unfollow(user.id) }}
                                     disabled={isFollowingProgress.some(id => id === user.id)}>
                                     Unfollow </button>
                                 : <button
+                                    className='btn btn-outline-light'
                                     onClick={() => { follow(user.id) }}
                                     disabled={isFollowingProgress.some(id => id === user.id)}>
                                     Follow </button>}
                         </div>
                     </div>
                 </div>)}
+            </div>
+            <div className={style.paginationWrap}>
+                <Pagination
+                    activePage={currentPage}
+                    itemsCountPerPage={pageSize}
+                    totalItemsCount={totalUsersCount}
+                    pageRangeDisplayed={5}
+                    onChange={onPageChanged}
+                    itemClass='page-item'
+                    linkClass='page-link'
+                />
             </div>
         </div>
     )
