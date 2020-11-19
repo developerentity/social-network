@@ -18,6 +18,8 @@ import Login from './components/Login/Login';
 import { getInitializeApp } from './redux/appReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import Preloader from './components/common/preloader/Preloader';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const App = () => {
 
@@ -32,7 +34,7 @@ const App = () => {
     return <Preloader />
   }
   return (
-    <div className="container">
+    <div>
       <div className="grid">
         <Router>
           <HeaderContainer />

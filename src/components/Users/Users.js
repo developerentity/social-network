@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Pagination from "react-js-pagination";
 import style from './Users.module.css';
 
 const Users = (props) => {
@@ -13,25 +14,19 @@ const Users = (props) => {
         onPageChanged,
         isFollowingProgress } = props;
 
-    let pagesCount = Math.ceil(totalUsersCount / pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
-
     return (
         <div>
             <div>
-                {pages.map((el, i) => {
-                    return (
-                        <span onClick={() => { onPageChanged(el) }}
-                            className={currentPage === el ? `${style.activePage} ${style.paginationBtn}` : `${style.paginationBtn}`} key={i}>
-                            {el}
-                        </span>
-                    )
-                })}
+                <Pagination
+                    activePage={currentPage}
+                    itemsCountPerPage={pageSize}
+                    totalItemsCount={totalUsersCount}
+                    pageRangeDisplayed={5}
+                    onChange={onPageChanged}
+                    itemClass='page-item'
+                    linkClass='page-link'
+                />
             </div>
-
             <div className={style.usersWrap}>
                 {users.map(user => <div key={user.id}>
                     <div className={style.userWrap}>
