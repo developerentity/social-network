@@ -45,8 +45,8 @@ const UsersContainer = () => {
                 pageSize={pageSize}
                 currentPage={currentPage}
                 users={users}
-                follow={dispatch(follow)}
-                unfollow={dispatch(unfollow)}
+                follow={() => dispatch(follow())}
+                unfollow={() => dispatch(unfollow())}
                 onPageChanged={onPageChanged}
                 isFollowingProgress={isFollowingProgress}
             />}
