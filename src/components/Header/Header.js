@@ -1,25 +1,14 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import style from './Header.module.css';
+import LoginLogoutBTN from '../Login/LoginLogoutBTN';
 
-const Header = (props) => {
-
-    const [hide, setHide] = useState(false)
+const Header = () => {
 
     return (
         <div className={style.header}>
             <div className={style.headerText}>The orbit</div>
             <div className={style.loginNL}>
-                <div className={style.loginInput}>
-                    {props.isAuth
-                        ? <div className={style.btn}
-                            onMouseOver={() => setHide(true)}
-                            onMouseLeave={() => setHide(false)} >
-                            <div className={hide ? style.hide : null}>{props.login}</div>
-                            <div className={!hide ? style.hide : null} onClick={props.getLogout}>Logout</div>
-                        </div>
-                        : <NavLink to='/login'><div className={style.btn + ' ' + style.login}>Login</div> </NavLink>}
-                </div>
+                <LoginLogoutBTN />
             </div>
         </div>
     )

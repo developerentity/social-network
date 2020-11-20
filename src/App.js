@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './components/css/App.css';
-import HeaderContainer from './components/Header/HeaderContainer';
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
 import MessagesContainer from './components/Messages/MessagesContainer';
@@ -14,12 +13,13 @@ import {
   Route
 } from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer';
-import Login from './components/Login/Login';
+import LoginForm from './components/Login/LoginForm';
 import { getInitializeApp } from './redux/appReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import Preloader from './components/common/preloader/Preloader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import Header from './components/Header/Header';
 
 const App = () => {
 
@@ -37,23 +37,17 @@ const App = () => {
     <div>
       <div className="grid">
         <Router>
-          <HeaderContainer />
+          <Header />
           <Nav />
           <div className='content'>
-            <Route path='/profile/:userId?'>
-              <ProfileContainer />
-            </Route>
-            <Route path='/messages'>
-              <MessagesContainer />
-            </Route>
-            <Route path='/users'>
-              <UsersContainer />
-            </Route>
+            <Route path='/profile/:userId?' component={ProfileContainer} />
+            <Route path='/messages' component={MessagesContainer} />
+            <Route path='/users' component={UsersContainer} />
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
             <Route path='/shuffle' component={Shuffle} />
-            <Route path='/login' component={Login} />
+            <Route path='/login' component={LoginForm} />
           </div>
           <Footer />
         </Router>
