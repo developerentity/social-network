@@ -4,17 +4,24 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { Form, Field } from 'react-final-form'
 import { composeValidators, minLength, required } from '../../util/validators';
+import { useDispatch, useSelector } from 'react-redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { addMessage } from './../../redux/dialogsReducer';
 
-const Messages = (props) => {
+const Messages = () => {
 
-    let dialogsElements = props.dialogsData
+    const dispatch = useDispatch()
+    const dialogsData = useSelector(state => state.messagePage.dialogsData)
+    const messagesData = useSelector(state => state.messagePage.messagesData)
+
+    let dialogsElements = dialogsData
         .map(person => <DialogItem key={person.id} id={person.id} name={person.name} />)
 
-    let messagesElements = props.messagesData
+    let messagesElements = messagesData
         .map(message => <Message key={message.m.toString()} message={message.m} />)
 
     const addNewMessage = (val) => {
-        props.addMessageFunc(val.newMessageBody)
+        dispatch(addMessage(val.newMessageBody))
     }
 
     return (
@@ -79,5 +86,5 @@ const AddMessageForm = (props) => {
     )
 }
 
-export default Messages;
+export default withAuthRedirect(Messages);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getLogin } from '../../redux/authReducer';
 import { Form, Field } from 'react-final-form'
 import { composeValidators, required, maxLengthCreator, minLength } from '../../util/validators';
@@ -8,13 +8,17 @@ import { Redirect } from 'react-router-dom';
 import style from '../FormsControls/FormControls.module.css';
 
 
-const LoginForm = (props) => {
+const LoginForm = () => {
 
-    const onSubmit = (formData) => {
-        props.getLogin(formData.email, formData.password, formData.rememberMe)
+    const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.auth.isAuth)
+    const authFormError = useSelector(state => state.auth.authFormError)
+
+    const onSubmit = (data) => {
+        dispatch(getLogin(data.email, data.password, data.rememberMe))
     }
 
-    if (props.isAuth) return <Redirect to='/profile' />
+    if (isAuth) return <Redirect to='/profile' />
 
     return (
         <>
@@ -46,9 +50,9 @@ const LoginForm = (props) => {
                             component={'input'}
                         /> Remember me
 
-                        {props.authFormError &&
+                        {authFormError &&
                             <div className={style.formSumError}>
-                                {props.authFormError}
+                                {authFormError}
                             </div>}
                         <div>
                             <button type="submit">
@@ -62,11 +66,4 @@ const LoginForm = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return ({
-        isAuth: state.auth.isAuth,
-        authFormError: state.auth.authFormError
-    })
-}
-
-export default connect(mapStateToProps, { getLogin })(LoginForm);
+export default LoginForm;

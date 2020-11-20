@@ -1,6 +1,6 @@
 const ADD_MESSAGE = "ADD_MESSAGE";
 
-export const actionCreatorAddMessage = (body) => {
+export const addMessage = (body) => {
     return { type: ADD_MESSAGE, body }
 }
 
