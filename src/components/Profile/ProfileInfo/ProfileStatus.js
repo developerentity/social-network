@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux';
 
 const ProfileStatus = (props) => {
 
-    const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(props.userStatus);
+    const { userStatus, getUpdateStatus } = props
+
+    const [editMode, setEditMode] = useState(false)
+    const [status, setStatus] = useState(userStatus)
 
     const authorizedUserId = useSelector(state => state.auth.userId)
     const selectedProfileUserId = useSelector(state => state.profilePage.profile.userId)
@@ -14,8 +16,8 @@ const ProfileStatus = (props) => {
     }
     const deactivateEditMode = () => {
         setEditMode(false)
-        if (props.userStatus !== status) {
-            props.getUpdateStatus(status)
+        if (userStatus !== status) {
+            getUpdateStatus(status)
         }
     }
     const onStatusChange = (text) => {
@@ -23,8 +25,8 @@ const ProfileStatus = (props) => {
     }
 
     useEffect(() => {
-        setStatus(props.userStatus)
-    }, [props.userStatus])
+        setStatus(userStatus)
+    }, [userStatus])
 
 
     return (
@@ -35,7 +37,7 @@ const ProfileStatus = (props) => {
                         style={{ cursor: 'pointer' }}
                         onDoubleClick={() => activateEditMode()}
                     >
-                        {props.userStatus || "enter status there"}
+                        {userStatus || "enter status there"}
                     </span>
                 </div>}
             {editMode &&
