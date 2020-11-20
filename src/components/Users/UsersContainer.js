@@ -37,6 +37,10 @@ const UsersContainer = () => {
         dispatch(getUsers(pageNumber, pageSize))
     }
 
+    const callBack = func => userId => {
+        dispatch(func(userId))
+    }
+
     return (
         <>{isFetching
             ? <Preloader />
@@ -45,8 +49,8 @@ const UsersContainer = () => {
                 pageSize={pageSize}
                 currentPage={currentPage}
                 users={users}
-                follow={() => dispatch(follow())}
-                unfollow={() => dispatch(unfollow())}
+                follow={callBack(follow)}
+                unfollow={callBack(unfollow)}
                 onPageChanged={onPageChanged}
                 isFollowingProgress={isFollowingProgress}
             />}
