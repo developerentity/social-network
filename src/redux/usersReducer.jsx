@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api";
+import { updateObjInArr } from "../util/objectHelper";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -21,25 +22,10 @@ const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: true }
-                    }
-                    return user
-                })
-            }
+            return { ...state, users: updateObjInArr(state.users, action.userId, 'id', { followed: true }) }
+
         case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: false }
-                    }
-                    return user
-                })
-            }
+            return { ...state, users: updateObjInArr(state.users, action.userId, 'id', { followed: false }) }
 
         case SET_USERS:
             return { ...state, users: action.users }
@@ -89,51 +75,43 @@ export const setFollowingProgress = (isFetching, userId) => {
 }
 
 export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async dispatch => {
         dispatch(toggleIsFetching(true))
         dispatch(setCurrentPage(currentPage))
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(toggleIsFetching(false))
-                dispatch(setUsers(data.data.items))
-                dispatch(setTotalUsersCount(data.data.totalCount))
-            })
-            .catch(err => {
-                console.error(err)
-                dispatch(toggleIsFetching(false))
-            })
+        try {
+            const data = await usersAPI.getUsers(currentPage, pageSize)
+            dispatch(setUsers(data.data.items))
+            dispatch(setTotalUsersCount(data.data.totalCount))
+            dispatch(toggleIsFetching(false))
+        } catch (err) {
+            console.error(err)
+            dispatch(toggleIsFetching(false))
+        }
     }
 }
-export const unfollow = (userId) => {
-    return (dispatch) => {
-        dispatch(setFollowingProgress(true, userId))
-        usersAPI.unfollow(userId)
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(setFollowingProgress(false, userId))
-            })
-            .catch(err => {
-                console.error(err)
-                dispatch(setFollowingProgress(false, userId))
-            })
+
+const followUnfollowFlow = async (userId, dispatch, apiMethod, actionCreator) => {
+    dispatch(setFollowingProgress(true, userId))
+    try {
+        const res = await apiMethod(userId)
+        if (res.data.resultCode === 0) {
+            dispatch(actionCreator(userId))
+        }
+        dispatch(setFollowingProgress(false, userId))
+    } catch (err) {
+        console.error(err)
+        dispatch(setFollowingProgress(false, userId))
     }
 }
-export const follow = (userId) => {
-    return (dispatch) => {
-        dispatch(setFollowingProgress(true, userId))
-        usersAPI.follow(userId)
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(setFollowingProgress(false, userId))
-            })
-            .catch(err => {
-                console.error(err)
-                dispatch(setFollowingProgress(false, userId))
-            })
+
+export const unfollow = userId => {
+    return async dispatch => {
+        followUnfollowFlow(userId, dispatch, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
+    }
+}
+export const follow = userId => {
+    return async dispatch => {
+        followUnfollowFlow(userId, dispatch, usersAPI.follow.bind(usersAPI), followSuccess)
     }
 }
 
