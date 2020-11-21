@@ -25,12 +25,14 @@ const setInitializedSuccess = () => {
 }
 
 export const getInitializeApp = () => {
-    return (dispatch) => {
-        let promise = dispatch(getAuth())
-        Promise.all([promise])
-            .then(() => {
-                dispatch(setInitializedSuccess())
-            })
+    return async dispatch => {
+        try {
+            let promise = dispatch(getAuth())
+            await Promise.all([promise])
+            dispatch(setInitializedSuccess())
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
 
