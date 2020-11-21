@@ -40,41 +40,44 @@ const setAuthFormError = (error) => {
 }
 
 export const getAuth = () => {
-    return (dispatch) => {
-        return authAPI.me()
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    let { id, email, login } = res.data.data;
-                    dispatch(setAuthUserData(id, email, login, true))
-                }
-            })
-            .catch(err => console.error(err))
+    return async (dispatch) => {
+        try {
+            const res = await authAPI.me();
+            if (res.data.resultCode === 0) {
+                let { id, email, login } = res.data.data;
+                dispatch(setAuthUserData(id, email, login, true));
+            }
+        } catch (err) {
+            return console.error(err);
+        }
     }
 }
 
 export const getLogin = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.login(email, password, rememberMe)
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    dispatch(getAuth())
-                } else {
-                    let message = res.data.messages.length > 0 ? res.data.messages[0] : 'error'
-                    dispatch(setAuthFormError(message))
-                }
-            })
-            .catch(err => console.error(err))
+    return async dispatch => {
+        try {
+            const res = await authAPI.login(email, password, rememberMe)
+            if (res.data.resultCode === 0) {
+                dispatch(getAuth())
+            } else {
+                let message = res.data.messages.length > 0 ? res.data.messages[0] : 'error'
+                dispatch(setAuthFormError(message))
+            }
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
 export const getLogout = () => {
-    return (dispatch) => {
-        authAPI.logout()
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    dispatch(setAuthUserData(null, null, null, false))
-                }
-            })
-            .catch(err => console.error(err))
+    return async dispatch => {
+        try {
+            const res = await authAPI.logout()
+            if (res.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false))
+            }
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
 
