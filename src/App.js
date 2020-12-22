@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { lazy, useEffect, Suspense } from 'react';
 import './components/css/App.css';
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
@@ -6,7 +6,6 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Shuffle from './components/Shuffle/Shuffle';
-import UsersContainer from './components/Users/UsersContainer';
 import {
   BrowserRouter as Router,
   Route
@@ -19,7 +18,9 @@ import Preloader from './components/common/preloader/Preloader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Header from './components/Header/Header';
-import Messages from './components/Messages/Messages';
+
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer'))
+const Messages = lazy(() => import('./components/Messages/Messages'))
 
 const App = () => {
 
@@ -41,8 +42,20 @@ const App = () => {
           <Nav />
           <div className='content'>
             <Route path='/profile/:userId?' component={ProfileContainer} />
-            <Route path='/messages' component={Messages} />
-            <Route path='/users' component={UsersContainer} />
+            <Route
+              path='/messages'
+              render={() => {
+                return <Suspense fallback={<div> Loading... </div>}>
+                  <Messages />
+                </Suspense>
+              }} />
+            <Route
+              path='/users'
+              render={() => {
+                return <Suspense fallback={<div> Loading... </div>}>
+                  <UsersContainer />
+                </Suspense>
+              }} />
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
