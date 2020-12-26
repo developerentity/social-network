@@ -7,7 +7,7 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Shuffle from './components/Shuffle/Shuffle';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Route
 } from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -37,7 +37,7 @@ const App = () => {
   return (
     <div>
       <div className="grid">
-        <Router basename={process.env.PUBLIC_URL}>
+        <HashRouter>
           <Header />
           <Nav />
           <div className='content'>
@@ -63,7 +63,7 @@ const App = () => {
             <Route path='/login' component={LoginForm} />
           </div>
           <Footer />
-        </Router>
+        </HashRouter>
       </div>
     </div>
   );
