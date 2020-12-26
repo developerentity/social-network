@@ -37,7 +37,7 @@ const App = () => {
   return (
     <div>
       <div className="grid">
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Header />
           <Nav />
           <div className='content'>
