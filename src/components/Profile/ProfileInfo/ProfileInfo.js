@@ -35,9 +35,19 @@ const ProfileInfo = (props) => {
                 <div className={style.infoWrap}>
                     <div className={style.wrap}>
                         <div className={style.contentWrap}>
-                            <div>
-                                <img src={profile.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt="..." />
-                                {isOwner && <input type='file' onChange={onMainPhotoSelected} />}
+                            <div 
+                            className={style.imgWrap}
+                            >
+                                <img src={profile.photos.large || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt="..." />
+                                {isOwner && <div><input
+                                    type='file'
+                                    name='file'
+                                    id='file'
+                                    onChange={onMainPhotoSelected}
+                                    className={style.inputFile} 
+                                    />
+                                    <label htmlFor="file"><div>Choose a photo</div></label>
+                                </div>}
                             </div>
                             <div>
                                 <ProfileStatus
