@@ -7,10 +7,18 @@ import ProfileStatus from './ProfileStatus';
 const ProfileInfo = (props) => {
 
     const {
+        isOwner,
+        savePhoto,
         profile,
         userStatus,
         getUpdateStatus
     } = props;
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
+    }
 
     if (!profile) {
         return (
@@ -29,6 +37,7 @@ const ProfileInfo = (props) => {
                         <div className={style.contentWrap}>
                             <div>
                                 <img src={profile.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png'} alt="..." />
+                                {isOwner && <input type='file' onChange={onMainPhotoSelected} />}
                             </div>
                             <div>
                                 <ProfileStatus

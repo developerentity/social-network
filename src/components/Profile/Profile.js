@@ -8,6 +8,8 @@ const Profile = (props) => {
     return (
         <article className={style.article}>
             <ProfileInfo
+                isOwner={props.isOwner}
+                savePhoto={props.savePhoto}
                 profile={props.profile}
                 userStatus={props.userStatus}
                 getUpdateStatus={props.getUpdateStatus}
