@@ -128,5 +128,21 @@ export const savePhoto = (file) => {
         }
     }
 }
+export const saveProfile = (profile) => {
+    return async (dispatch, getState) => {
+        try {
+            const userId = getState().auth.userId
+            const res = await profileAPI.saveProfile(profile)
+            if (res.data.resultCode === 0) {
+                dispatch(getProfile(userId))
+            }
+            return Promise.reject(res.data.message)
+        }
+        catch (err) {
+            console.error(err)
+            return Promise.reject()
+        }
+    }
+}
 
 export default profileReducer;

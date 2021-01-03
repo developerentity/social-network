@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './ProfileInfo.module.css';
 import wallpaper from './../../img/wall.jpg'
 import Preloader from '../../common/preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
+import ProfileDataForm from './ProfileDataForm';
 
 const ProfileInfo = (props) => {
 
     const {
         isOwner,
         savePhoto,
+        saveProfile,
         profile,
         userStatus,
         getUpdateStatus
     } = props;
+
+    const [editMode, setEditMode] = useState(false)
+
+    const onSubmit = (data) => {
+        saveProfile(data)
+            .then(() => {
+                setEditMode(false)
+            })
+    }
 
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
@@ -53,27 +64,9 @@ const ProfileInfo = (props) => {
                                     getUpdateStatus={getUpdateStatus}
                                 />
                             </div>
-
-                            <div>
-                                <h3>{profile.fullName}</h3>
-                                <div>
-                                    {profile.aboutMe ? <p>About me: {profile.aboutMe}</p> : null}
-                                </div>
-                                <div>
-                                    <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
-                                </div>
-                                <div>
-                                    <b>My professional skills</b>: {profile.lookingForAJobDescription}
-                                </div>
-                                <div>
-                                    <b>Contacts</b>:
-                                    <div className={style.contacts}>
-                                        {Object.keys(profile.contacts).map(key => {
-                                            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
+                            {editMode
+                                ? <ProfileDataForm profile={profile} onSubmit={onSubmit} />
+                                : <ProfileData goToEditMode={() => { setEditMode(true) }} profile={profile} isOwner={isOwner} />}
                         </div>
                     </div>
                 </div>
@@ -84,7 +77,35 @@ const ProfileInfo = (props) => {
 
 const Contact = ({ contactTitle, contactValue }) => {
     return (
-        <div><b>{contactTitle}</b>: {contactValue}</div>
+        <div>
+            <b>{contactTitle}</b>: {contactValue}
+        </div>
+    )
+}
+
+const ProfileData = ({ profile, goToEditMode, isOwner }) => {
+    return (
+        <div>
+            {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
+            <h3>{profile.fullName}</h3>
+            <div>
+                <b>About me</b>: {profile.aboutMe}
+            </div>
+            <div>
+                <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
+            </div>
+            <div>
+                <b>My professional skills</b>: {profile.lookingForAJobDescription}
+            </div>
+            <div>
+                <b>Contacts</b>:
+                <div className={style.contacts}>
+                    {Object.keys(profile.contacts).map(key => {
+                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+                    })}
+                </div>
+            </div>
+        </div>
     )
 }
 
