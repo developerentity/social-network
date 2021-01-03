@@ -67,3 +67,7 @@
 .inputFile+label:hover {
     opacity: 1;
 }
+
+.contacts {
+    text-align: start;
+}

@@ -56,15 +56,35 @@ const ProfileInfo = (props) => {
 
                             <div>
                                 <h3>{profile.fullName}</h3>
-                                {profile.aboutMe ? <p>About me: {profile.aboutMe}</p> : null}
-                                {profile.contacts.facebook ? <p>Fb: {profile.contacts.facebook}</p> : null}
-                                {profile.contacts.instagram ? <p>Inst: {profile.contacts.instagram}</p> : null}
+                                <div>
+                                    {profile.aboutMe ? <p>About me: {profile.aboutMe}</p> : null}
+                                </div>
+                                <div>
+                                    <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
+                                </div>
+                                <div>
+                                    <b>My professional skills</b>: {profile.lookingForAJobDescription}
+                                </div>
+                                <div>
+                                    <b>Contacts</b>:
+                                    <div className={style.contacts}>
+                                        {Object.keys(profile.contacts).map(key => {
+                                            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+                                        })}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </>
+    )
+}
+
+const Contact = ({ contactTitle, contactValue }) => {
+    return (
+        <div><b>{contactTitle}</b>: {contactValue}</div>
     )
 }
 
