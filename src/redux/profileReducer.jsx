@@ -1,3 +1,4 @@
+import { FORM_ERROR } from "final-form";
 import { profileAPI } from "../api/api";
 
 const ADD_POST = "ADD_POST";
@@ -135,12 +136,14 @@ export const saveProfile = (profile) => {
             const res = await profileAPI.saveProfile(profile)
             if (res.data.resultCode === 0) {
                 dispatch(getProfile(userId))
+                return null
             }
-            return Promise.reject(res.data.message)
+            else {
+                return { [FORM_ERROR]: res.data.message }
+            }
         }
         catch (err) {
             console.error(err)
-            return Promise.reject()
         }
     }
 }

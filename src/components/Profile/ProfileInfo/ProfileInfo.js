@@ -18,11 +18,12 @@ const ProfileInfo = (props) => {
 
     const [editMode, setEditMode] = useState(false)
 
-    const onSubmit = (data) => {
-        saveProfile(data)
-            .then(() => {
-                setEditMode(false)
-            })
+    const onSubmit = async data => {
+        const res = await saveProfile(data)
+        if (res) {
+            return res
+        }
+        setEditMode(false)
     }
 
     const onMainPhotoSelected = (e) => {
