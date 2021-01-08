@@ -5,17 +5,18 @@ import { Form, Field } from 'react-final-form'
 import { composeValidators, required, maxLengthCreator, minLength } from '../../util/validators';
 import { Input } from '../FormsControls/FormsControls';
 import { Redirect } from 'react-router-dom';
-import style from '../FormsControls/FormControls.module.css';
 
 
 const LoginForm = () => {
 
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth)
-    const authFormError = useSelector(state => state.auth.authFormError)
 
-    const onSubmit = (data) => {
-        dispatch(getLogin(data.email, data.password, data.rememberMe))
+    const onSubmit = data => {
+        const res = dispatch(getLogin(data.email, data.password, data.rememberMe))
+        if (res) {
+            return res
+        }
     }
 
     if (isAuth) return <Redirect to='/profile' />
@@ -25,7 +26,11 @@ const LoginForm = () => {
             <h1>Login</h1>
             <Form
                 onSubmit={onSubmit}
-                render={({ handleSubmit }) => (
+                render={({
+                    handleSubmit,
+                    submitError,
+                    submitting
+                }) => (
                     <form onSubmit={handleSubmit}>
 
                         <Field
@@ -50,12 +55,9 @@ const LoginForm = () => {
                             component={'input'}
                         /> Remember me
 
-                        {authFormError &&
-                            <div className={style.formSumError}>
-                                {authFormError}
-                            </div>}
+                        {submitError && <div style={{ color: 'red' }}>{submitError}</div>}
                         <div>
-                            <button type="submit">
+                            <button type="submit" disabled={submitting}>
                                 Submit
                             </button>
                         </div>

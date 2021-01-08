@@ -1,14 +1,13 @@
+import { FORM_ERROR } from "final-form";
 import { authAPI } from "../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
-const SET_AUTH_FORM_ERROR = "SET_AUTH_FORM_ERROR";
 
 const initialState = {
     userId: null,
     email: null,
     login: null,
     isAuth: false,
-    authFormError: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -20,12 +19,6 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
             }
 
-        case SET_AUTH_FORM_ERROR:
-            return {
-                ...state,
-                authFormError: action.error
-            }
-
         default:
             return state
     }
@@ -33,10 +26,6 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login, isAuth) => {
     return { type: SET_USER_DATA, data: { userId, email, login, isAuth } }
-}
-
-const setAuthFormError = (error) => {
-    return { type: SET_AUTH_FORM_ERROR, error }
 }
 
 export const getAuth = () => {
@@ -59,9 +48,9 @@ export const getLogin = (email, password, rememberMe) => {
             const res = await authAPI.login(email, password, rememberMe)
             if (res.data.resultCode === 0) {
                 dispatch(getAuth())
+                return null
             } else {
-                let message = res.data.messages.length > 0 ? res.data.messages[0] : 'error'
-                dispatch(setAuthFormError(message))
+                return { [FORM_ERROR]: res.data.messages.length > 0 ? res.data.messages[0] : 'error' }
             }
         } catch (err) {
             console.error(err)
