@@ -11,9 +11,10 @@ const LoginForm = () => {
 
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth)
+    const captchaUrl = useSelector(state => state.auth.captchaUrl)
 
     const onSubmit = data => {
-        const res = dispatch(getLogin(data.email, data.password, data.rememberMe))
+        const res = dispatch(getLogin(data.email, data.password, data.rememberMe, data.captcha))
         if (res) {
             return res
         }
@@ -56,6 +57,14 @@ const LoginForm = () => {
                         /> Remember me
 
                         {submitError && <div style={{ color: 'red' }}>{submitError}</div>}
+                        {captchaUrl && <img src={captchaUrl} alt='...' />}
+                        {captchaUrl && <Field
+                            name='captcha'
+                            component={Input}
+                            validate={required}
+                            placeholder='Captcha symbols'
+                            type='text'
+                        />}
                         <div>
                             <button type="submit" disabled={submitting}>
                                 Submit
