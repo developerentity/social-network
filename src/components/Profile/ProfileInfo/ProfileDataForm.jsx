@@ -73,6 +73,22 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
               )}
             </Field>
 
+            <div>
+              <b>Contacts</b>:
+                {Object.keys(profile.contacts).map(key => {
+                return <div key={key}>
+                  <Field name={`contacts.${key}`}>
+                    {({ input }) => (
+                      <div>
+                        <label><b>{key}:</b></label>
+                        <input {...input} type="text" placeholder={`Your ${key} link`} />
+                        {submitError?.toLowerCase().includes(key) && <div> {submitError.split('(')[0]} </div>}
+                      </div>)}
+                  </Field>
+                </div>
+              })}
+            </div>
+
             {submitError && <div>{submitError}</div>}
 
             <div>

@@ -139,7 +139,7 @@ export const saveProfile = (profile) => {
                 return null
             }
             else {
-                return { [FORM_ERROR]: res.data.message }
+                return { [FORM_ERROR]: res.data.messages[0] }
             }
         }
         catch (err) {
