@@ -8,6 +8,7 @@ import Settings from './components/Settings/Settings';
 import Shuffle from './components/Shuffle/Shuffle';
 import {
   HashRouter,
+  Redirect,
   Route
 } from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -41,6 +42,9 @@ const App = () => {
           <Header />
           <Nav />
           <div className='content'>
+            <Route exact path='/'>
+              <Redirect to={'/profile'} />
+            </Route>
             <Route path='/profile/:userId?' component={ProfileContainer} />
             <Route
               path='/messages'
@@ -61,6 +65,9 @@ const App = () => {
             <Route path='/settings' component={Settings} />
             <Route path='/shuffle' component={Shuffle} />
             <Route path='/login' component={LoginForm} />
+            <Route path='*'>
+              <div>404 Not found</div>
+            </Route>
           </div>
           <Footer />
         </HashRouter>
