@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
+import style from './ProfileInfo.module.css'
 
 const ProfileDataForm = ({ profile, onSubmit }) => {
 
@@ -13,7 +14,7 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
           if (!values.fullName) {
             errors.fullName = 'Required'
           }
-          if (values.lookingForAJob && !values.lookingForAJobDescription) {
+          if (!values.lookingForAJobDescription) {
             errors.lookingForAJobDescription = 'Please, write your skills'
           }
           if (!values.aboutMe) {
@@ -34,7 +35,7 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
                   <label>Enter full name</label>
                   <input {...input} type="text" placeholder="John Smith" />
                   {(meta.error || meta.submitError) && meta.touched && (
-                    <span>{meta.error || meta.submitError}</span>
+                    <span className={style.textError}>{meta.error || meta.submitError}</span>
                   )}
                 </div>
               )}
@@ -48,7 +49,7 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
                 <div>
                   <label>Is looking for a job</label>
                   <input {...input} type="checkbox" />
-                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                  {meta.error && meta.touched && <span className={style.textError}>{meta.error}</span>}
                 </div>
               )}
             </Field>
@@ -58,7 +59,7 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
                 <div>
                   <label>Job description</label>
                   <input {...input} type="text" placeholder="Skills" />
-                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                  {meta.error && meta.touched && <span className={style.textError}>{meta.error}</span>}
                 </div>
               )}
             </Field>
@@ -68,7 +69,7 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
                 <div>
                   <label>About me</label>
                   <input {...input} type="text" placeholder="Something interesting about you" />
-                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                  {meta.error && meta.touched && <span className={style.textError}>{meta.error}</span>}
                 </div>
               )}
             </Field>
@@ -81,15 +82,14 @@ const ProfileDataForm = ({ profile, onSubmit }) => {
                     {({ input }) => (
                       <div>
                         <label><b>{key}:</b></label>
-                        <input {...input} type="text" placeholder={`Your ${key} link`} />
-                        {submitError?.toLowerCase().includes(key) && <div> {submitError.split('(')[0]} </div>}
+                        <input {...input} type="text" placeholder={`Your ${key} link`} className={submitError?.toLowerCase().includes(key) ? style.fieldError : ''} />
                       </div>)}
                   </Field>
                 </div>
               })}
             </div>
 
-            {submitError && <div>{submitError}</div>}
+            {submitError && <div className={style.textError}>{submitError.split('(')[0]}</div>}
 
             <div>
               <button type="submit" disabled={submitting}> Save </button>

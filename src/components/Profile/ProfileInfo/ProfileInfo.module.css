@@ -71,3 +71,11 @@
 .contacts {
     text-align: start;
 }
+
+.fieldError {
+    border: 3px solid red;
+}
+
+.textError {
+    color: red;
+}
