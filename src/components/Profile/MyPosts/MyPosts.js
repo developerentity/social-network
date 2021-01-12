@@ -5,7 +5,7 @@ import Post from './Post/Post';
 
 const MyPosts = React.memo(props => {
 
-    let postsElements = props.postsData
+    const postsElements = props.postsData
         .map(post => <Post
             key={post.text}
             avatar={post.avatar}
@@ -13,7 +13,10 @@ const MyPosts = React.memo(props => {
             like={post.like}
         />)
 
-    let addPost = (val) => {
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+    const addPost = async val => {
+        await sleep(200)
         props.addPostFunc(val.newPostBody);
     }
 
@@ -34,15 +37,19 @@ const AddPostForm = (props) => {
     return (
         <Form
             onSubmit={props.onSubmit}
-            render={({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
+            initialValues={{ employed: true }}
+            render={({ handleSubmit, submitting, pristine, form }) => (
+                <form
+                    onSubmit={event => {
+                        handleSubmit(event).then(() => form.reset())
+                    }}>
                     <div className="containerTextarea">
                         <Field
                             component='textarea'
                             name='newPostBody'
                             placeholder='Please enter text' />
                     </div>
-                    <button type='submit'>Add news</button>
+                    <button type="submit" disabled={submitting || pristine}> Add post </button>
                 </form>
             )}
         />
