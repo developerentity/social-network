@@ -79,3 +79,7 @@
 .textError {
     color: red;
 }
+
+.profileStatus {
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import style from './ProfileInfo.module.css';
 
 const ProfileStatus = (props) => {
 
@@ -11,8 +12,10 @@ const ProfileStatus = (props) => {
     const authorizedUserId = useSelector(state => state.auth.userId)
     const selectedProfileUserId = useSelector(state => state.profilePage.profile.userId)
 
+    const isMyProfile = authorizedUserId === selectedProfileUserId
+
     const activateEditMode = () => {
-        if (authorizedUserId === selectedProfileUserId) setEditMode(true)
+        isMyProfile && setEditMode(true)
     }
     const deactivateEditMode = () => {
         setEditMode(false)
@@ -34,7 +37,7 @@ const ProfileStatus = (props) => {
             {!editMode &&
                 <div>
                     <span
-                        style={{ cursor: 'pointer' }}
+                        className={isMyProfile ? style.profileStatus : ''}
                         onDoubleClick={() => activateEditMode()}
                     >
                         {userStatus || "enter status there"}
