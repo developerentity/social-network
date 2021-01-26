@@ -37,7 +37,7 @@ const ProfileStatus = (props) => {
             {!editMode &&
                 <div className={isMyProfile ? style.profileStatus : ''}>
                     <span onDoubleClick={() => activateEditMode()}>
-                        {userStatus || "enter status there"}
+                        {userStatus || (isMyProfile ? "enter status there" : null)}
                     </span>
                 </div>}
             {editMode &&
