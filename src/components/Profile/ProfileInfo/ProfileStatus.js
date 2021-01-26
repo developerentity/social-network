@@ -43,6 +43,7 @@ const ProfileStatus = (props) => {
             {editMode &&
                 <div>
                     <input
+                        className='form-control mt-2'
                         onBlur={() => { deactivateEditMode() }}
                         autoFocus={true}
                         value={status}
