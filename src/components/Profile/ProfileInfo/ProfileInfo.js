@@ -77,17 +77,17 @@ const ProfileInfo = (props) => {
 }
 
 const Contact = ({ contactTitle, contactValue }) => {
-    return (
-        <div>
+    if (contactValue) {
+        return <div>
             <b>{contactTitle}</b>: {contactValue}
         </div>
-    )
+    }
+    return <></>
 }
 
 const ProfileData = ({ profile, goToEditMode, isOwner }) => {
     return (
         <div>
-            {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
             <h3>{profile.fullName}</h3>
             <div>
                 <b>About me</b>: {profile.aboutMe}
@@ -98,14 +98,15 @@ const ProfileData = ({ profile, goToEditMode, isOwner }) => {
             <div>
                 <b>My professional skills</b>: {profile.lookingForAJobDescription}
             </div>
-            <div>
-                <b>Contacts</b>:
+            <div className="mt-2">
+                <b>Contacts</b>
                 <div className={style.contacts}>
                     {Object.keys(profile.contacts).map(key => {
                         return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
                     })}
                 </div>
             </div>
+            {isOwner && <div><button className='btn btn-light mt-2' onClick={goToEditMode}>edit</button></div>}
         </div>
     )
 }

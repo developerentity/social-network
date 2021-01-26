@@ -35,11 +35,8 @@ const ProfileStatus = (props) => {
     return (
         <>
             {!editMode &&
-                <div>
-                    <span
-                        className={isMyProfile ? style.profileStatus : ''}
-                        onDoubleClick={() => activateEditMode()}
-                    >
+                <div className={isMyProfile ? style.profileStatus : ''}>
+                    <span onDoubleClick={() => activateEditMode()}>
                         {userStatus || "enter status there"}
                     </span>
                 </div>}

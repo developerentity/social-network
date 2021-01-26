@@ -24,9 +24,9 @@
     box-shadow        : 0px 0px 22px 4px rgba(0, 0, 0, 1);
 }
 
-.contentWrap {
+/* .contentWrap {
     text-align: center;
-}
+} */
 
 .imgWrap {
     max-width: 200px;
@@ -72,14 +72,18 @@
     text-align: start;
 }
 
-.fieldError {
-    border: 3px solid red;
-}
-
 .textError {
     color: red;
 }
 
 .profileStatus {
     cursor: pointer;
+    margin: .5em;
+}
+
+.formWrap {
+    text-align   : start;
+    border       : 1px solid #545454;
+    border-radius: 5px;
+    padding      : .5em;
 }
