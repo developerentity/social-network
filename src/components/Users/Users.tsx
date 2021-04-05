@@ -1,9 +1,20 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Pagination from "react-js-pagination";
-import style from './Users.module.css';
+import React, { FC } from 'react'
+import { NavLink } from 'react-router-dom'
+import Pagination from "react-js-pagination"
+import style from './Users.module.css'
+import { UserType } from '../../types/types'
 
-const Users = (props) => {
+type PropsType = {
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    users: Array<UserType>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    onPageChanged: (pageNumber: number) => void
+    isFollowingProgress: Array<number>
+}
+const Users: FC<PropsType> = (props) => {
 
     const { totalUsersCount,
         pageSize,

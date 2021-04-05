@@ -57,7 +57,7 @@ const App = () => {
               path='/users'
               render={() => {
                 return <Suspense fallback={<div> Loading... </div>}>
-                  <UsersContainer />
+                  <UsersContainer pageTitle={"May the force be with you"} />
                 </Suspense>
               }} />
             <Route path='/news' component={News} />
