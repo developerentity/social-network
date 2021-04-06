@@ -1,6 +1,8 @@
+import { AppStateType } from './redux-store';
 import { UserType } from './../types/types';
 import { usersAPI } from "../api/api";
 import { updateObjInArr } from "../util/objectHelper";
+import { Dispatch } from 'redux';
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -21,7 +23,7 @@ const initialState = {
 
 type InitialStateType = typeof initialState
 
-const usersReducer = (state = initialState, action: any): InitialStateType => {
+const usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
@@ -119,8 +121,23 @@ export const setFollowingProgress = (isFetching: boolean, userId: number): SetFo
     return { type: SET_FOLLOWING_PROGRESS, isFetching, userId }
 }
 
+type ActionTypes =
+    FollowSuccessActionType |
+    UnfollowSuccessActionType |
+    SetUsersActionType |
+    SetCurrentPageActionType |
+    SetTotalUsersCountActionType |
+    ToggleIsFetchingActionType |
+    SetFollowingProgressActionType
+
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionTypes>
+
 export const getUsers = (currentPage: number, pageSize: number) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType, getState: GetStateType) => {
+        // let test = getState().usersPage.users
+        // console.log(test)  // we can take form state
+
         dispatch(toggleIsFetching(true))
         dispatch(setCurrentPage(currentPage))
         try {
