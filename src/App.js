@@ -19,9 +19,15 @@ import Preloader from './components/common/preloader/Preloader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Header from './components/Header/Header';
+import { withSuspense } from './hoc/withSuspense';
 
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'))
 const Messages = lazy(() => import('./components/Messages/Messages'))
+const ChatPageContainer = lazy(() => import('./pages/Chat/ChatPage'))
+
+const SuspendedMessages = withSuspense(Messages)
+const SuspendedUsers = withSuspense(UsersContainer)
+const SuspendedChatPage = withSuspense(ChatPageContainer)
 
 const App = () => {
 
@@ -46,25 +52,14 @@ const App = () => {
               <Redirect to={'/profile'} />
             </Route>
             <Route path='/profile/:userId?' component={ProfileContainer} />
-            <Route
-              path='/messages'
-              render={() => {
-                return <Suspense fallback={<div> Loading... </div>}>
-                  <Messages />
-                </Suspense>
-              }} />
-            <Route
-              path='/users'
-              render={() => {
-                return <Suspense fallback={<div> Loading... </div>}>
-                  <UsersContainer pageTitle={"May the force be with you"} />
-                </Suspense>
-              }} />
+            <Route path='/messages' component={SuspendedMessages} />
+            <Route path='/users' component={SuspendedUsers} />
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
             <Route path='/shuffle' component={Shuffle} />
             <Route path='/login' component={LoginForm} />
+            <Route path='/chat' component={SuspendedChatPage} />
             <Route path='*'>
               <div>404 Not found</div>
             </Route>

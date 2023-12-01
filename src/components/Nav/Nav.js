@@ -40,6 +40,11 @@ const Nav = () => {
                     Shuffle
                 </NavLink>
             </div>
+            <div  className={style.item}>
+                <NavLink to='/chat' activeClassName={style.activeName}>
+                    Chat
+                </NavLink>
+            </div>
         </nav>
     )
 }
